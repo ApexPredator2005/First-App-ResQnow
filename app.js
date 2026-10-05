@@ -146,6 +146,16 @@ function escapeHtml(str) {
   return str.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
 }
 
+// Global URL sanitizer to block javascript:, vbscript:, and malicious schemes
+function sanitizeSafeUrl(url) {
+  if (!url || typeof url !== "string") return "#";
+  const trimmed = url.trim();
+  if (/^(?:https?:\/\/|tel:|mailto:|sms:|blob:|data:image\/[a-z0-9.+_-]+;base64,|data:application\/pdf;base64,)/i.test(trimmed)) {
+    return escapeHtml(trimmed);
+  }
+  return "#";
+}
+
 async function loadStoredSettings() {
   let serverKey = "";
   // Primary source: fetch shared API key from serverless proxy (/api/config)
@@ -1749,8 +1759,9 @@ function openPlaceDetailsModal(place) {
 
   // Contact links
   if (place.internationalPhoneNumber) {
+    const cleanPhone = String(place.internationalPhoneNumber).replace(/[^\d+]/g, "");
     DOM.modalPhoneLink.classList.remove("hidden");
-    DOM.modalPhoneLink.setAttribute("href", `tel:${place.internationalPhoneNumber}`);
+    DOM.modalPhoneLink.setAttribute("href", sanitizeSafeUrl(`tel:${cleanPhone}`));
     DOM.modalPhoneLink.querySelector("span").textContent = `📞 Call ${place.internationalPhoneNumber}`;
   } else {
     DOM.modalPhoneLink.classList.add("hidden");
@@ -1758,7 +1769,9 @@ function openPlaceDetailsModal(place) {
 
   if (place.websiteURI || place.googleMapsURI) {
     DOM.modalWebsiteLink.classList.remove("hidden");
-    DOM.modalWebsiteLink.setAttribute("href", place.websiteURI || place.googleMapsURI);
+    DOM.modalWebsiteLink.setAttribute("href", sanitizeSafeUrl(place.websiteURI || place.googleMapsURI));
+    DOM.modalWebsiteLink.setAttribute("target", "_blank");
+    DOM.modalWebsiteLink.setAttribute("rel", "noopener noreferrer");
   } else {
     DOM.modalWebsiteLink.classList.add("hidden");
   }
@@ -2316,8 +2329,8 @@ function setupHealthModal() {
         ${item.medicines ? `<p class="health-card-desc"><b>Medications:</b> ${escapeHtml(item.medicines)}</p>` : ''}
         ${item.fileData ? `
           <div class="rx-preview-box">
-            ${item.fileType?.startsWith("image/") ? `<img src="${escapeHtml(item.fileData)}" alt="Prescription" class="rx-img-thumb">` : ''}
-            <a href="${escapeHtml(item.fileData)}" download="${escapeHtml(item.fileName || 'prescription')}" class="btn-rx-download" target="_blank">📄 View/Download ${escapeHtml(item.fileName || 'Document')}</a>
+            ${item.fileType?.startsWith("image/") ? `<img src="${sanitizeSafeUrl(item.fileData)}" alt="Prescription" class="rx-img-thumb">` : ''}
+            <a href="${sanitizeSafeUrl(item.fileData)}" download="${escapeHtml(item.fileName || 'prescription')}" class="btn-rx-download" target="_blank" rel="noopener noreferrer">📄 View/Download ${escapeHtml(item.fileName || 'Document')}</a>
           </div>
         ` : ''}
         <div class="health-card-actions">
