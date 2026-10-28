@@ -646,6 +646,16 @@ dialog[open] {
     border-radius: 9999px;
     margin: 0 auto 0.65rem auto !important;
     cursor: grab !important;
+    position: relative;
+  }
+
+  .mobile-drawer-handle::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    bottom: -14px;
+    left: -24px;
+    right: -24px;
   }
 
   /* Category Pills on mobile - Option 1: 2x3 Grid matching desktop layout & colors */
