@@ -237,55 +237,103 @@
 
       <!-- Emergency Squadrons Grid -->
       <section class="glass-tile p-3.5 rounded-2xl animate-fade-in-up stagger-2 category-pills">
-        <h2 class="font-headline text-[15px] font-semibold text-slate-800 mb-2.5 px-1">Emergency Squadrons</h2>
+        <div class="flex items-center justify-between mb-2.5 px-1">
+          <h2 class="font-headline text-[13.5px] font-extrabold text-white tracking-tight flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-[#D7FB38]">local_fire_department</span>
+            Emergency Squadrons
+          </h2>
+          <span class="text-[9.5px] font-mono text-[#D7FB38] font-bold">LIVE TELEMETRY</span>
+        </div>
         <div class="grid grid-cols-2 gap-2.5">
           
-          <button class="pill pill-hospital active glass-card-hospital interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="hospital">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Hospitals</span>
-              <span class="text-base">🏥</span>
+          <!-- Hospital Card -->
+          <button class="pill pill-hospital active glass-card-hospital interactive-element rounded-[20px] p-3 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="hospital">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] pointer-events-none select-none transition-transform group-hover:scale-110">local_hospital</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-white/20 border border-white/35 text-white shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">local_hospital</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count" id="count-hospital">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-hospital">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight">Hospitals</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight">24/7 Trauma ER</span>
+            </div>
           </button>
 
-          <button class="pill pill-police glass-card-police interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="police">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Police</span>
-              <span class="text-base">👮</span>
+          <!-- Police Card -->
+          <button class="pill pill-police glass-card-police interactive-element rounded-[20px] p-3 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="police">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] pointer-events-none select-none transition-transform group-hover:scale-110">local_police</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-white/20 border border-white/35 text-white shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">local_police</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count" id="count-police">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-police">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight">Police</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight">Patrol & Precincts</span>
+            </div>
           </button>
 
-          <button class="pill pill-fire glass-card-fire interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#43291F] relative overflow-hidden" data-category="fire_station">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label text-[#43291F]">Fire Stations</span>
-              <span class="text-base">🚒</span>
+          <!-- Fire Stations Card -->
+          <button class="pill pill-fire glass-card-fire interactive-element rounded-[20px] p-3 flex flex-col justify-between text-[#43291F] relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="fire_station">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] text-[#43291F] pointer-events-none select-none transition-transform group-hover:scale-110">local_fire_department</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-[#43291F]/15 border border-[#43291F]/20 text-[#43291F] shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">local_fire_department</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count text-[#43291F]" id="count-fire_station">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#43291F]" id="count-fire_station">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight text-[#43291F]">Fire Stations</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight text-[#43291F]">Rescue & HAZMAT</span>
+            </div>
           </button>
 
-          <button class="pill pill-pharmacy glass-card-pharmacy interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#163B2C] relative overflow-hidden" data-category="pharmacy">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label text-[#163B2C]">Pharmacies</span>
-              <span class="text-base">💊</span>
+          <!-- Pharmacies Card -->
+          <button class="pill pill-pharmacy glass-card-pharmacy interactive-element rounded-[20px] p-3 flex flex-col justify-between text-[#163B2C] relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="pharmacy">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] text-[#163B2C] pointer-events-none select-none transition-transform group-hover:scale-110">medication</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-[#163B2C]/15 border border-[#163B2C]/20 text-[#163B2C] shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">medication</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count text-[#163B2C]" id="count-pharmacy">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#163B2C]" id="count-pharmacy">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight text-[#163B2C]">Pharmacies</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight text-[#163B2C]">24/7 Meds & Oxygen</span>
+            </div>
           </button>
 
-          <button class="pill pill-vet glass-card-vet interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#F4F0BB] relative overflow-hidden" data-category="veterinary_care">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label text-[#F4F0BB]">Vet Clinics</span>
-              <span class="text-base">🐾</span>
+          <!-- Vet Clinics Card -->
+          <button class="pill pill-vet glass-card-vet interactive-element rounded-[20px] p-3 flex flex-col justify-between text-[#F4F0BB] relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="veterinary_care">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] text-[#F4F0BB] pointer-events-none select-none transition-transform group-hover:scale-110">pets</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-[#F4F0BB]/18 border border-[#F4F0BB]/30 text-[#F4F0BB] shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">pets</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count text-[#F4F0BB]" id="count-veterinary_care">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#F4F0BB]" id="count-veterinary_care">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight text-[#F4F0BB]">Vet Clinics</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight text-[#F4F0BB]">Animal Emergency</span>
+            </div>
           </button>
 
-          <button class="pill pill-blood glass-card-blood interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="blood_bank">
-            <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Blood Banks</span>
-              <span class="text-base">🩸</span>
+          <!-- Blood Banks Card -->
+          <button class="pill pill-blood glass-card-blood interactive-element rounded-[20px] p-3 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer transition-all active:scale-[0.97]" data-category="blood_bank">
+            <span class="material-symbols-outlined material-symbols-filled absolute -bottom-3 -right-2 text-[68px] opacity-[0.10] text-white pointer-events-none select-none transition-transform group-hover:scale-110">bloodtype</span>
+            <div class="flex justify-between items-center w-full relative z-10">
+              <div class="squadron-icon-pod bg-white/20 border border-white/35 text-white shadow-sm">
+                <span class="material-symbols-outlined material-symbols-filled text-[24px]">bloodtype</span>
+              </div>
+              <span class="font-headline text-[24px] font-black tracking-tight leading-none pill-count text-white" id="count-blood_bank">0</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-blood_bank">0</span>
+            <div class="mt-2.5 text-left relative z-10">
+              <span class="font-headline text-[13px] font-extrabold pill-label block leading-tight tracking-tight text-white">Blood Banks</span>
+              <span class="text-[9.5px] font-medium opacity-85 block mt-0.5 tracking-tight text-white">Plasma & Reserves</span>
+            </div>
           </button>
 
         </div>

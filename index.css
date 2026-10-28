@@ -86,26 +86,31 @@ html, body {
   color: #FFFFFF;
 }
 
+/* Material Symbols Filled State */
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24 !important;
+}
+
 /* Category Emergency Services Cards - Custom Coolors Earth & Fire Palette */
 /* Palette: #DA2C38 (Fiery Scarlet), #226F54 (Forest Depths), #87C38F (Lively Mint), #F4F0BB (Sunlight Glow), #43291F (Chocolate Bark) */
 .glass-card-hospital {
   background: linear-gradient(135deg, #DA2C38 0%, #B81E29 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 6px 18px rgba(218, 44, 56, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 8px 22px rgba(218, 44, 56, 0.32) !important;
   color: #FFFFFF !important;
 }
 
 .glass-card-police {
   background: linear-gradient(135deg, #226F54 0%, #17543F 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 6px 18px rgba(34, 111, 84, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 8px 22px rgba(34, 111, 84, 0.32) !important;
   color: #FFFFFF !important;
 }
 
 .glass-card-fire {
   background: linear-gradient(135deg, #F4F0BB 0%, #E6E1A2 100%) !important;
-  border: 1px solid rgba(67, 41, 31, 0.18) !important;
-  box-shadow: 0 6px 18px rgba(244, 240, 187, 0.35) !important;
+  border: 1px solid rgba(67, 41, 31, 0.16) !important;
+  box-shadow: 0 8px 22px rgba(244, 240, 187, 0.32) !important;
   color: #43291F !important;
 }
 .glass-card-fire .pill-label,
@@ -115,8 +120,8 @@ html, body {
 
 .glass-card-pharmacy {
   background: linear-gradient(135deg, #87C38F 0%, #68AB71 100%) !important;
-  border: 1px solid rgba(34, 111, 84, 0.25) !important;
-  box-shadow: 0 6px 18px rgba(135, 195, 143, 0.35) !important;
+  border: 1px solid rgba(34, 111, 84, 0.22) !important;
+  box-shadow: 0 8px 22px rgba(135, 195, 143, 0.32) !important;
   color: #163B2C !important;
 }
 .glass-card-pharmacy .pill-label,
@@ -126,8 +131,8 @@ html, body {
 
 .glass-card-vet {
   background: linear-gradient(135deg, #43291F 0%, #2B1812 100%) !important;
-  border: 1px solid rgba(244, 240, 187, 0.25) !important;
-  box-shadow: 0 6px 18px rgba(67, 41, 31, 0.45) !important;
+  border: 1px solid rgba(244, 240, 187, 0.22) !important;
+  box-shadow: 0 8px 22px rgba(67, 41, 31, 0.42) !important;
   color: #F4F0BB !important;
 }
 .glass-card-vet .pill-label,
@@ -137,13 +142,35 @@ html, body {
 
 .glass-card-blood {
   background: linear-gradient(135deg, #DA2C38 0%, #43291F 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 6px 18px rgba(218, 44, 56, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  box-shadow: 0 8px 22px rgba(218, 44, 56, 0.36) !important;
   color: #FFFFFF !important;
 }
 .glass-card-blood .pill-label,
 .glass-card-blood .pill-count {
   color: #FFFFFF !important;
+}
+
+/* Premium Frosted Icon Pod inside Emergency Cards */
+.squadron-icon-pod {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.pill:hover .squadron-icon-pod {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.pill:active .squadron-icon-pod {
+  transform: scale(0.94);
 }
 
 /* Active Category Selection Glow */
@@ -759,15 +786,16 @@ dialog[open] {
   }
 
   .pill-label {
-    font-size: 12.5px !important;
-    font-weight: 700 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em !important;
   }
 
   .pill-count {
-    font-size: 18px !important;
-    font-weight: 800 !important;
-    margin-top: 0.15rem !important;
-    margin-left: 0 !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
   }
 
   /* 4. Floating Action Buttons (Location Arrow on mobile, SOS replaced by capsule nav) */
