@@ -88,6 +88,123 @@
   <aside id="sidebar-island" class="md:fixed md:top-14 md:left-0 md:bottom-0 md:w-[360px] lg:w-[380px] overflow-y-auto custom-scroll z-20 p-3.5 md:p-4 pointer-events-none">
     <div class="pointer-events-auto flex flex-col gap-4 pb-20">
       <div class="mobile-drawer-handle hidden md:hidden"></div>
+
+      <!-- Mobile Quick Search Input (Dribbble Clean Pill Style) -->
+      <div class="relative flex items-center md:hidden mb-1">
+        <span class="material-symbols-outlined text-neutral-400 absolute left-3.5 text-[18px]">search</span>
+        <input id="mobile-places-search" class="w-full h-10 pl-10 pr-4 bg-white/95 border border-black/10 rounded-full text-xs text-slate-800 placeholder-neutral-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D7FB38]" placeholder="Search 24/7 ERs, ICU beds, oxygen..." type="text">
+      </div>
+
+      <!-- Mobile Dual High-Contrast Metric Cards (Dribbble Electric Neon Lime Style) -->
+      <div class="grid grid-cols-2 gap-2.5 md:hidden">
+        <!-- Metric Card 1: Nearest 24/7 ER -->
+        <div id="metric-card-er" class="bg-[#D7FB38] text-[#121316] rounded-[22px] p-3.5 flex flex-col justify-between shadow-lg shadow-[#D7FB38]/20 border border-[#b3d400]/40 relative overflow-hidden cursor-pointer active:scale-95 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xl">🏥</span>
+            <span class="w-7 h-7 rounded-full bg-[#121316] text-white flex items-center justify-center text-xs font-bold">➔</span>
+          </div>
+          <div>
+            <div class="text-[26px] font-black tracking-tight leading-none text-[#121316]">
+              <span id="metric-nearest-dist">--</span> <span class="text-xs font-bold">km</span>
+            </div>
+            <p class="text-[11px] font-bold text-[#121316]/80 tracking-tight mt-0.5">Nearest 24/7 ER</p>
+            <div class="mt-1.5 inline-flex items-center gap-1 bg-[#121316]/10 rounded-full px-2 py-0.5 text-[9.5px] font-extrabold text-[#121316]">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+              <span id="metric-nearest-eta">ETA: RAPID</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Card 2: Panic Safety Timer -->
+        <div id="metric-card-timer" class="bg-[#D7FB38] text-[#121316] rounded-[22px] p-3.5 flex flex-col justify-between shadow-lg shadow-[#D7FB38]/20 border border-[#b3d400]/40 relative overflow-hidden cursor-pointer active:scale-95 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xl">⏱️</span>
+            <span class="w-7 h-7 rounded-full bg-[#121316] text-white flex items-center justify-center text-xs font-bold">➔</span>
+          </div>
+          <div>
+            <div class="text-[26px] font-black tracking-tight leading-none text-[#121316]">
+              <span id="metric-timer-val">20</span> <span class="text-xs font-bold">min</span>
+            </div>
+            <p class="text-[11px] font-bold text-[#121316]/80 tracking-tight mt-0.5">Safety Timer</p>
+            <div class="mt-1.5 inline-flex items-center gap-1 bg-[#121316]/10 rounded-full px-2 py-0.5 text-[9.5px] font-extrabold text-[#121316]">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-700 animate-pulse"></span>
+              <span id="metric-timer-status">GUARDIAN READY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trauma Capacity Advisory Card (Dribbble Announcements Style) -->
+      <div id="trauma-advisory-card" class="bg-[#1B1D22] border border-white/10 rounded-[22px] p-3.5 relative overflow-hidden shadow-xl text-white md:hidden">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            Trauma Advisory • Live
+          </span>
+          <span class="text-[10px] font-mono text-emerald-400 font-bold flex items-center gap-0.5">
+            ✓ 24/7 Verified
+          </span>
+        </div>
+        <h3 class="text-[13px] font-bold text-white tracking-tight mt-0.5 mb-1">
+          PMCH Apex ER Capacity Update
+        </h3>
+        <p class="text-[11px] text-neutral-300 leading-snug mb-2.5">
+          14 ICU ventilator beds open; cashless PM-JAY &amp; TPA claim desk active.
+        </p>
+        <div class="flex items-center justify-between pt-1 border-t border-white/10">
+          <div class="flex items-center gap-1 text-[10px] text-neutral-400">
+            <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">O+</span>
+            <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">A+</span>
+            <span class="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">B-</span>
+            <span class="text-neutral-400 pl-1">+4 units</span>
+          </div>
+          <button id="advisory-route-btn" class="bg-white hover:bg-neutral-100 text-[#121316] font-bold text-[11px] px-3 py-1 rounded-full flex items-center gap-1 shadow-sm active:scale-95 transition-all">
+            <span>Quick Route</span>
+            <span class="text-xs">➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2x2 Emergency Quick Actions (Mobile Dribbble Style) -->
+      <section class="md:hidden">
+        <div class="flex items-center justify-between mb-2 px-1">
+          <h2 class="text-[13px] font-bold text-slate-800 dark:text-white tracking-tight">Quick Actions</h2>
+          <span class="text-[10px] font-bold text-emerald-600 dark:text-[#D7FB38]">1-Tap Dispatch</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div id="qa-sos-btn" class="bg-[#1E2024] hover:bg-[#25282e] active:scale-[0.98] transition-all rounded-2xl p-2.5 border border-white/[0.08] flex items-center gap-2 cursor-pointer shadow-sm">
+            <div class="w-8 h-8 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-500 text-base shadow-[0_0_12px_rgba(239,68,68,0.25)] shrink-0">🚨</div>
+            <div class="truncate">
+              <h4 class="text-[11.5px] font-bold text-white leading-tight">One-Tap SOS</h4>
+              <p class="text-[9.5px] text-red-400 font-semibold truncate">Direct Dispatch</p>
+            </div>
+          </div>
+
+          <div id="qa-timer-btn" class="bg-[#1E2024] hover:bg-[#25282e] active:scale-[0.98] transition-all rounded-2xl p-2.5 border border-white/[0.08] flex items-center gap-2 cursor-pointer shadow-sm">
+            <div class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 text-base shrink-0">⏱️</div>
+            <div class="truncate">
+              <h4 class="text-[11.5px] font-bold text-white leading-tight">Panic Timer</h4>
+              <p class="text-[9.5px] text-amber-300 font-semibold truncate">Auto-Alert: 20m</p>
+            </div>
+          </div>
+
+          <div id="qa-medical-btn" class="bg-[#1E2024] hover:bg-[#25282e] active:scale-[0.98] transition-all rounded-2xl p-2.5 border border-white/[0.08] flex items-center gap-2 cursor-pointer shadow-sm">
+            <div class="w-8 h-8 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-base shrink-0">📋</div>
+            <div class="truncate">
+              <h4 class="text-[11.5px] font-bold text-white leading-tight">Medical ID</h4>
+              <p class="text-[9.5px] text-blue-300 font-semibold truncate">Blood &amp; TPA Card</p>
+            </div>
+          </div>
+
+          <div id="qa-firstaid-btn" class="bg-[#1E2024] hover:bg-[#25282e] active:scale-[0.98] transition-all rounded-2xl p-2.5 border border-white/[0.08] flex items-center gap-2 cursor-pointer shadow-sm">
+            <div class="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-base shrink-0">🩺</div>
+            <div class="truncate">
+              <h4 class="text-[11.5px] font-bold text-white leading-tight">First-Aid AI</h4>
+              <p class="text-[9.5px] text-emerald-300 font-semibold truncate">Voice Protocols</p>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <!-- Search Radius Selector Tile -->
       <div class="glass-tile p-3 px-4 rounded-2xl flex items-center justify-between w-full interactive-element animate-fade-in-up stagger-1">
@@ -223,24 +340,43 @@
     </button>
   </div>
 
-  <!-- Mobile Bottom Nav Bar (1-Thumb Mobile Touch Targets) -->
-  <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 glass-panel rounded-t-3xl border-t border-white/50">
-    <button id="nav-tab-medical-id" class="flex flex-col items-center justify-center text-slate-500 hover:text-primary transition-all px-3 py-1.5 outline-none">
-      <span class="material-symbols-outlined mb-0.5 text-[22px]">badge</span>
-      <span class="font-body text-[10px] font-bold">Medical ID</span>
+  <!-- Mobile Floating Capsule Navigation Bar (Dribbble Translucent Dark Capsule) -->
+  <nav id="mobile-capsule-nav" aria-label="Mobile Navigation" class="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-50 flex justify-between items-center px-3 py-1.5 rounded-full w-[94%] max-w-[390px] bg-[#16181D]/95 backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black/60">
+    <!-- Nav Item 1: Radar (Toggle Drawer to View Map) -->
+    <button id="nav-btn-radar" class="flex flex-col items-center justify-center text-[#D7FB38] font-bold transition-all active:scale-90 px-2 py-1 outline-none" title="Radar Map View">
+      <span class="material-symbols-outlined text-[21px]">radar</span>
+      <span class="text-[9.5px] mt-0.5 tracking-tight font-extrabold">Radar</span>
     </button>
-    <button id="nav-tab-helplines" class="flex flex-col items-center justify-center text-slate-500 hover:text-primary transition-all px-3 py-1.5 outline-none">
-      <span class="material-symbols-outlined mb-0.5 text-[22px]">call</span>
-      <span class="font-body text-[10px] font-bold">Helplines</span>
+
+    <!-- Nav Item 2: Triage / Facilities (Expands Full Feed) -->
+    <button id="nav-btn-triage" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-all active:scale-90 px-2 py-1 outline-none" title="Emergency Facilities">
+      <span class="material-symbols-outlined text-[21px]">domain</span>
+      <span class="text-[9.5px] mt-0.5 tracking-tight font-medium">Triage</span>
     </button>
-    <button id="nav-tab-health" class="flex flex-col items-center justify-center text-slate-500 hover:text-primary transition-all px-3 py-1.5 outline-none">
-      <span class="material-symbols-outlined mb-0.5 text-[22px]">favorite</span>
-      <span class="font-body text-[10px] font-bold">Health</span>
+
+    <!-- Nav Item 3: Center Raised SOS Pulse Trigger -->
+    <button id="nav-btn-sos" aria-label="Emergency SOS Trigger" class="relative -top-3.5 flex flex-col items-center justify-center group active:scale-90 transition-transform outline-none">
+      <div class="w-[50px] h-[50px] rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/60 ring-4 ring-[#16181D] animate-pulse">
+        <span class="material-symbols-outlined text-[24px] text-white">emergency</span>
+      </div>
+      <span class="text-[9px] text-white font-black mt-0.5 tracking-widest uppercase">SOS</span>
     </button>
-    <button id="nav-tab-settings" class="flex flex-col items-center justify-center text-slate-500 hover:text-primary transition-all px-3 py-1.5 outline-none">
-      <span class="material-symbols-outlined mb-0.5 text-[22px]">settings</span>
-      <span class="font-body text-[10px] font-bold">Settings</span>
+
+    <!-- Nav Item 4: Medical ID & Health Profile -->
+    <button id="nav-tab-medical-id" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-all active:scale-90 px-2 py-1 outline-none" title="Medical ID & Insurance">
+      <span class="material-symbols-outlined text-[21px]">badge</span>
+      <span class="text-[9.5px] mt-0.5 tracking-tight font-medium">Medical</span>
     </button>
+
+    <!-- Nav Item 5: Helplines & Settings -->
+    <button id="nav-tab-settings" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-all active:scale-90 px-2 py-1 outline-none" title="Settings">
+      <span class="material-symbols-outlined text-[21px]">tune</span>
+      <span class="text-[9.5px] mt-0.5 tracking-tight font-medium">Settings</span>
+    </button>
+
+    <!-- Hidden alias anchors for backward-compatibility -->
+    <button id="nav-tab-helplines" class="hidden"></button>
+    <button id="nav-tab-health" class="hidden"></button>
   </nav>
 
   <!-- Emergency Helplines Modal (India) -->

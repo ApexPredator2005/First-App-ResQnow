@@ -1244,6 +1244,30 @@ function processAndRenderResults(places, category, searchId, fitBounds = true) {
   if (fitBounds) {
     fitMapToResults();
   }
+
+  // Update Dribbble-inspired Mobile ER metric card
+  updateMobileMetrics(state.placesList);
+}
+
+function updateMobileMetrics(places) {
+  const distEl = document.getElementById("metric-nearest-dist");
+  const etaEl = document.getElementById("metric-nearest-eta");
+  if (!distEl || !places || places.length === 0 || !state.userLocation) return;
+
+  const sorted = [...places].sort((a, b) => {
+    const dA = getApproxDistance(state.userLocation, a.location);
+    const dB = getApproxDistance(state.userLocation, b.location);
+    return dA - dB;
+  });
+
+  const nearest = sorted[0];
+  const distKm = (getApproxDistance(state.userLocation, nearest.location) / 1000).toFixed(1);
+  distEl.textContent = distKm;
+
+  if (etaEl) {
+    const estMin = Math.max(2, Math.round(distKm * 2.2));
+    etaEl.textContent = `ETA: ~${estMin} MIN`;
+  }
 }
 
 // ============================================================================
@@ -2872,6 +2896,16 @@ function setupPanicTimer() {
     const text = formatTime(state.panicTimerSecondsRemaining);
     if (countdownDisplay) countdownDisplay.textContent = text;
     if (bannerCountdown) bannerCountdown.textContent = text;
+
+    // Synchronize Dribbble-inspired Mobile Metric Card
+    const metricTimerVal = document.getElementById("metric-timer-val");
+    const metricTimerStatus = document.getElementById("metric-timer-status");
+    if (metricTimerVal) {
+      metricTimerVal.textContent = state.panicTimerActive ? text : String(selectedMins || 20);
+    }
+    if (metricTimerStatus) {
+      metricTimerStatus.textContent = state.panicTimerActive ? "COUNTDOWN ACTIVE" : "GUARDIAN READY";
+    }
   }
 
   function armGuardian(mins) {
@@ -3643,3 +3677,184 @@ function setupPullToRefresh() {
 }
 
 setupPullToRefresh();
+
+// ============================================================================
+// MOBILE REDESIGN (DRIBBLE-INSPIRED OBSIDIAN & NEON LIME UI INTERACTIONS)
+// ============================================================================
+function setupMobileRedesignUI() {
+  const drawer = document.getElementById("sidebar-island");
+  const handle = drawer?.querySelector(".mobile-drawer-handle");
+  const searchInput = document.getElementById("mobile-places-search");
+  const metricCardER = document.getElementById("metric-card-er");
+  const metricCardTimer = document.getElementById("metric-card-timer");
+  const advisoryRouteBtn = document.getElementById("advisory-route-btn");
+  const qaSosBtn = document.getElementById("qa-sos-btn");
+  const qaTimerBtn = document.getElementById("qa-timer-btn");
+  const qaMedicalBtn = document.getElementById("qa-medical-btn");
+  const qaFirstAidBtn = document.getElementById("qa-firstaid-btn");
+  const navBtnRadar = document.getElementById("nav-btn-radar");
+  const navBtnTriage = document.getElementById("nav-btn-triage");
+  const navBtnSos = document.getElementById("nav-btn-sos");
+  const navTabMedical = document.getElementById("nav-tab-medical-id");
+  const navTabSettings = document.getElementById("nav-tab-settings");
+
+  // Helper to open SOS modal directly to a specific tab
+  function openSosModalWithTab(tabId) {
+    const sosModal = document.getElementById("sos-modal");
+    if (!sosModal) return;
+    const tabBtn = sosModal.querySelector(`.sos-tab-btn[data-tab="${tabId}"]`);
+    if (tabBtn) tabBtn.click();
+    try {
+      if (!sosModal.open) sosModal.showModal();
+    } catch (err) {
+      console.warn("Error opening SOS modal:", err);
+    }
+  }
+
+  // Helper to route to the nearest facility
+  function routeToNearestFacility() {
+    if (state.placesList && state.placesList.length > 0) {
+      const sorted = [...state.placesList].sort((a, b) => {
+        const dA = getApproxDistance(state.userLocation, a.location);
+        const dB = getApproxDistance(state.userLocation, b.location);
+        return dA - dB;
+      });
+      calculateAndRenderRoute(sorted[0]);
+    } else {
+      showToast("Searching for nearest emergency facility...", "info");
+      performNearbySearch();
+    }
+  }
+
+  // 1. Metric Card 1: Nearest ER Click -> Instant Navigation
+  metricCardER?.addEventListener("click", () => {
+    routeToNearestFacility();
+  });
+
+  // Advisory Quick Route Button
+  advisoryRouteBtn?.addEventListener("click", () => {
+    routeToNearestFacility();
+  });
+
+  // 2. Metric Card 2: Panic Safety Timer Click -> Open Timer Tab
+  metricCardTimer?.addEventListener("click", () => {
+    openSosModalWithTab("panic-timer");
+  });
+
+  // 3. Quick Action: 1-Tap SOS
+  qaSosBtn?.addEventListener("click", () => {
+    openSosModalWithTab("sos-broadcast");
+  });
+
+  // 4. Quick Action: Panic Timer
+  qaTimerBtn?.addEventListener("click", () => {
+    openSosModalWithTab("panic-timer");
+  });
+
+  // 5. Quick Action: Medical ID
+  qaMedicalBtn?.addEventListener("click", () => {
+    const openHealthBtn = document.getElementById("open-health-btn");
+    if (openHealthBtn) openHealthBtn.click();
+  });
+
+  // 6. Quick Action: First-Aid AI
+  qaFirstAidBtn?.addEventListener("click", () => {
+    openSosModalWithTab("first-aid-guide");
+  });
+
+  // 7. Mobile Capsule Navigation Bar: Radar (Map View)
+  navBtnRadar?.addEventListener("click", () => {
+    if (!drawer) return;
+    drawer.classList.remove("drawer-expanded");
+    drawer.classList.toggle("drawer-peek");
+    
+    // Toggle active style
+    if (drawer.classList.contains("drawer-peek")) {
+      navBtnRadar.classList.add("text-[#D7FB38]", "font-black");
+      navBtnRadar.classList.remove("text-neutral-400");
+      navBtnTriage?.classList.remove("text-[#D7FB38]", "font-black");
+      navBtnTriage?.classList.add("text-neutral-400");
+    } else {
+      navBtnRadar.classList.remove("text-[#D7FB38]", "font-black");
+      navBtnRadar.classList.add("text-neutral-400");
+    }
+
+    if (state.map && state.userLocation) {
+      state.map.panTo(state.userLocation);
+    }
+  });
+
+  // 8. Mobile Capsule Navigation Bar: Triage (Full List View)
+  navBtnTriage?.addEventListener("click", () => {
+    if (!drawer) return;
+    drawer.classList.remove("drawer-peek");
+    drawer.classList.toggle("drawer-expanded");
+
+    if (drawer.classList.contains("drawer-expanded")) {
+      navBtnTriage.classList.add("text-[#D7FB38]", "font-black");
+      navBtnTriage.classList.remove("text-neutral-400");
+      navBtnRadar?.classList.remove("text-[#D7FB38]", "font-black");
+      navBtnRadar?.classList.add("text-neutral-400");
+    } else {
+      navBtnTriage.classList.remove("text-[#D7FB38]", "font-black");
+      navBtnTriage.classList.add("text-neutral-400");
+    }
+  });
+
+  // 9. Mobile Capsule Navigation Bar: Center SOS
+  navBtnSos?.addEventListener("click", () => {
+    openSosModalWithTab("sos-broadcast");
+  });
+
+  // 10. Mobile Capsule Navigation Bar: Medical ID Tab
+  navTabMedical?.addEventListener("click", () => {
+    const openHealthBtn = document.getElementById("open-health-btn");
+    if (openHealthBtn) openHealthBtn.click();
+  });
+
+  // 11. Mobile Capsule Navigation Bar: Settings Tab
+  navTabSettings?.addEventListener("click", () => {
+    const helplinesModal = document.getElementById("helplines-modal");
+    if (helplinesModal) {
+      try {
+        if (!helplinesModal.open) helplinesModal.showModal();
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+  });
+
+  // 12. Tap on Drawer Handle toggles full/normal height
+  handle?.addEventListener("click", () => {
+    if (!drawer) return;
+    if (drawer.classList.contains("drawer-expanded")) {
+      drawer.classList.remove("drawer-expanded");
+    } else {
+      drawer.classList.remove("drawer-peek");
+      drawer.classList.add("drawer-expanded");
+    }
+  });
+
+  // 13. Mobile Live Search on Facilities Feed
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const items = document.querySelectorAll("#places-feed li");
+      let matchCount = 0;
+      items.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = "";
+          matchCount++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+      if (DOM.feedStatus && q) {
+        DOM.feedStatus.textContent = `Showing ${matchCount} match${matchCount === 1 ? '' : 'es'} for "${q}"`;
+      }
+    });
+  }
+}
+
+setupMobileRedesignUI();

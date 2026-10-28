@@ -514,33 +514,30 @@ dialog[open] {
     padding-right: 28px !important;
   }
 
-  /* 3. Mobile Bottom Sheet Drawer - Option 1: Floating Glass Island Stack */
+  /* 3. Mobile Bottom Sheet Drawer - Dribbble Modern Obsidian & Neon Lime Island */
   #sidebar-island {
     position: fixed !important;
     top: auto !important;
-    bottom: 84px !important;
+    bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: 48vh !important;
-    max-height: 48vh !important;
+    height: 52vh !important;
+    max-height: 52vh !important;
     z-index: 30 !important;
-    padding: 0.75rem 0.95rem !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.65) 100%) !important;
-    backdrop-filter: blur(32px) saturate(1.8) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(1.8) !important;
-    border-radius: 28px 28px 0 0 !important;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.12) !important;
+    padding: 0.75rem 0.95rem 5.5rem 0.95rem !important;
+    background: linear-gradient(180deg, #121316 0%, #0d0e11 100%) !important;
+    backdrop-filter: blur(28px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) !important;
+    border-radius: 32px 32px 0 0 !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.7) !important;
     transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1), max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
     pointer-events: auto !important;
   }
 
-  #sidebar-island h2 {
-    font-size: 14.5px !important;
-    font-weight: 800 !important;
+  #sidebar-island h2, #sidebar-island h3, #sidebar-island h4 {
     letter-spacing: -0.01em;
-    margin-bottom: 0.4rem !important;
   }
 
   /* Prevent drawer overlap with map callout */
@@ -548,7 +545,14 @@ dialog[open] {
     margin-top: 0 !important;
   }
 
-  /* Mobile Expanded Drawer Mode */
+  /* Mobile Peek Mode (Shows Map Radar clearly with top metric cards) */
+  #sidebar-island.drawer-peek {
+    height: 20vh !important;
+    max-height: 20vh !important;
+    overflow-y: hidden !important;
+  }
+
+  /* Mobile Expanded Drawer Mode (Full Facilities Triage View) */
   #sidebar-island.drawer-expanded {
     height: 88vh !important;
     max-height: 88vh !important;
@@ -556,37 +560,81 @@ dialog[open] {
 
   /* Translucent Tiles & Cards inside Mobile Drawer */
   #sidebar-island .glass-tile {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.48)) !important;
+    background: #1B1D22 !important;
     backdrop-filter: blur(24px) saturate(1.6) !important;
     -webkit-backdrop-filter: blur(24px) saturate(1.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding: 10px 14px !important;
     border-radius: 20px !important;
+    color: #ffffff !important;
   }
 
-  #sidebar-island .place-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.60)) !important;
+  #sidebar-island .glass-tile span {
+    color: #e2e8f0 !important;
+  }
+
+  #sidebar-island #radius-select {
+    background-color: #25282e !important;
+    color: #D7FB38 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    font-weight: 700 !important;
+  }
+
+  #sidebar-island .place-card, #places-feed li {
+    background: #1B1D22 !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding: 12px 14px !important;
     border-radius: 20px !important;
     margin-bottom: 10px !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
   }
 
-  #sidebar-island .place-card h3 {
+  #sidebar-island .place-card:hover, #places-feed li:hover {
+    background: #23262d !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+  }
+
+  #sidebar-island .place-card h3, #places-feed li h3 {
     font-size: 14px !important;
     font-weight: 700 !important;
     line-height: 1.3 !important;
+    color: #ffffff !important;
   }
 
-  #sidebar-island .place-card p, #sidebar-island .place-card span {
+  #sidebar-island .place-card p, #places-feed li p {
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    color: #94a3b8 !important;
+  }
+
+  #sidebar-island .place-card span, #places-feed li span {
     font-size: 12px !important;
     font-weight: 500 !important;
+    color: #cbd5e1 !important;
+  }
+
+  #places-feed li .border-slate-200\/40 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* Quick Route button on mobile place cards - High-contrast Electric Lime */
+  #places-feed .btn-route, #sidebar-island .btn-route {
+    background-color: #D7FB38 !important;
+    color: #121316 !important;
+    font-weight: 800 !important;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(215, 251, 56, 0.3) !important;
+  }
+
+  #places-feed .btn-route:active, #sidebar-island .btn-route:active {
+    transform: scale(0.95) !important;
   }
 
   #places-feed {
-    padding-bottom: 5.5rem !important;
+    padding-bottom: 6.5rem !important;
   }
 
   /* Drag handle indicator at top of mobile bottom drawer */
@@ -594,10 +642,10 @@ dialog[open] {
     display: block !important;
     width: 44px !important;
     height: 5px !important;
-    background-color: rgba(148, 163, 184, 0.7);
+    background-color: rgba(255, 255, 255, 0.3) !important;
     border-radius: 9999px;
-    margin: 0 auto 0.5rem auto !important;
-    cursor: pointer;
+    margin: 0 auto 0.65rem auto !important;
+    cursor: grab !important;
   }
 
   /* Category Pills on mobile - Option 1: 2x3 Grid matching desktop layout & colors */
@@ -619,6 +667,7 @@ dialog[open] {
     opacity: 0.95 !important;
     width: 100% !important;
     min-width: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease !important;
   }
 
@@ -627,7 +676,7 @@ dialog[open] {
   }
 
   .category-pills button.active {
-    box-shadow: 0 0 0 2px #ffffff, 0 6px 18px rgba(0, 0, 0, 0.22) !important;
+    box-shadow: 0 0 0 2px #D7FB38, 0 6px 18px rgba(215, 251, 56, 0.3) !important;
   }
 
   .pill-label {
@@ -642,53 +691,55 @@ dialog[open] {
     margin-left: 0 !important;
   }
 
-  /* 4. Floating Action Buttons (SOS & Location Arrow) */
+  /* 4. Floating Action Buttons (Location Arrow on mobile, SOS replaced by capsule nav) */
   .fixed.bottom-6.right-6 {
-    bottom: 96px !important;
-    right: 16px !important;
+    bottom: auto !important;
+    top: 68px !important;
+    right: 14px !important;
     z-index: 45 !important;
   }
 
   #sos-btn {
-    width: 3.75rem !important;
-    height: 3.75rem !important;
-    font-size: 14.5px !important;
-    background-color: #FF6B6B !important;
-    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.25), 0 8px 24px rgba(255, 107, 107, 0.45) !important;
+    display: none !important;
   }
 
-  /* 5. Mobile Bottom Tab Navigation Bar - Floating Glass Pill with Deep Rounding */
-  nav {
+  #map-location-btn {
+    background: rgba(22, 24, 29, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #D7FB38 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  /* 5. Mobile Floating Capsule Navigation Bar (Dribbble Translucent Dark Capsule) */
+  #mobile-capsule-nav {
     display: flex !important;
     position: fixed !important;
-    bottom: 12px !important;
-    left: 14px !important;
-    right: 14px !important;
-    width: auto !important;
-    height: 64px !important;
-    z-index: 50 !important;
+    bottom: 14px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 92% !important;
+    max-width: 390px !important;
+    height: 60px !important;
+    z-index: 60 !important;
     border-radius: 9999px !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.70) 100%) !important;
-    backdrop-filter: blur(32px) saturate(1.9) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(1.9) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-    padding: 0 0.5rem !important;
+    background: rgba(22, 24, 29, 0.96) !important;
+    backdrop-filter: blur(28px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+    padding: 0 0.75rem !important;
   }
 
-  nav button {
-    padding: 0.35rem 0.85rem !important;
+  #mobile-capsule-nav button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.25rem 0.5rem !important;
     border-radius: 9999px !important;
   }
 
-  nav button span.material-symbols-outlined {
-    font-size: 22px !important;
-    margin-bottom: 2px !important;
-  }
-
-  nav button span.font-body {
-    font-size: 11px !important;
-    font-weight: 700 !important;
+  #mobile-capsule-nav #nav-btn-sos div {
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.65) !important;
   }
 
   /* 6. Modals & Dialogs Responsiveness on Mobile */
