@@ -37,11 +37,11 @@
 }
 
 html, body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
   overflow: hidden;
   overscroll-behavior-y: contain;
-  position: relative;
   font-family: var(--font-headline);
   background-color: var(--color-surface);
   color: var(--color-on-surface);
@@ -1158,5 +1158,42 @@ dialog[open] {
   dialog .border-b,
   dialog .border-t {
     border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+}
+
+/* ============================================================================ */
+/* DESKTOP COMMAND CENTER & RIGHT TACTICAL DOCK                                  */
+/* ============================================================================ */
+#desktop-right-dock {
+  position: fixed !important;
+  top: 56px !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  width: 285px !important;
+  max-width: 285px !important;
+  box-sizing: border-box !important;
+  z-index: 25 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+@media (max-width: 1199px) {
+  #desktop-right-dock {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  #desktop-right-dock {
+    display: flex !important;
+  }
+}
+
+/* Ensure map controls don't overlap right dock on desktop */
+@media (min-width: 1200px) {
+  .floating-controls {
+    right: 300px !important;
   }
 }

@@ -31,7 +31,7 @@
     }
   </script>
 </head>
-<body class="text-on-surface antialiased relative w-screen h-screen overflow-hidden">
+<body class="text-on-surface antialiased w-full h-full max-w-full overflow-hidden">
   <!-- Ethereal Background Shader -->
   <div class="shader-bg"></div>
 
@@ -41,9 +41,9 @@
   </div>
 
   <!-- Top Sleek Glass Navigation Bar (Tactical Obsidian & Neon Command Bar) -->
-  <header class="glass-panel border-b border-white/10 shadow-xl fixed top-0 w-full z-40 animate-fade-in-up bg-[#121316]/90 backdrop-blur-xl text-white">
-    <div class="flex justify-between items-center w-full pl-2 pr-3 sm:px-5 py-2 max-w-[1600px] mx-auto">
-      <div class="flex items-center gap-1.5 sm:gap-3">
+  <header class="glass-panel border-b border-white/10 shadow-xl fixed top-0 left-0 right-0 w-full z-40 animate-fade-in-up bg-[#121316]/90 backdrop-blur-xl text-white">
+    <div class="flex justify-between items-center w-full pl-2 pr-3 sm:px-5 py-2 max-w-[1600px] mx-auto overflow-hidden">
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
         <!-- Logo Image + ResQNow CMD Text Name -->
         <a href="#" class="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <img src="logo.png" alt="ResQNow Logo" class="h-7 sm:h-8 w-auto object-contain">
@@ -62,7 +62,7 @@
       </div>
 
       <!-- Center Omnibar on Desktop: Global Search with ⌘K -->
-      <div class="hidden lg:flex items-center gap-2 max-w-md w-full mx-4">
+      <div class="hidden lg:flex items-center gap-2 max-w-md w-full mx-2 xl:mx-4 flex-1 min-w-0">
         <div class="relative w-full">
           <span class="material-symbols-outlined absolute left-3 top-2 text-[17px] text-neutral-400">search</span>
           <input id="desktop-global-search" type="text" placeholder="Search ERs, trauma bays, blood banks, oxygen..." class="w-full h-8 pl-9 pr-12 bg-[#1B1D22] border border-white/10 rounded-full text-xs text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#D7FB38]">
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
         <div id="spinner" class="spinner hidden"></div>
         <span id="feed-status" class="text-xs font-mono font-medium text-emerald-400 hidden 2xl:inline-block"></span>
         
@@ -394,7 +394,7 @@
   </aside>
 
   <!-- 3. DESKTOP RIGHT TACTICAL DOCK (Obsidian Command Dock for Wide Screens >= 1280px) -->
-  <aside id="desktop-right-dock" class="hidden xl:flex w-[300px] shrink-0 bg-[#16181D]/90 backdrop-blur-2xl border-l border-white/10 flex-col p-4 space-y-4 overflow-y-auto custom-scroll fixed right-0 top-14 bottom-0 z-20 pointer-events-auto">
+  <aside id="desktop-right-dock" class="hidden xl:flex w-[285px] shrink-0 bg-[#16181D]/90 backdrop-blur-2xl border-l border-white/10 flex-col p-3.5 space-y-3 overflow-y-auto custom-scroll fixed right-0 top-14 bottom-0 z-25 pointer-events-auto">
     <!-- Header: Tactical Actions -->
     <div class="flex items-center justify-between pb-2 border-b border-white/10">
       <div>
@@ -410,26 +410,26 @@
     <div class="grid grid-cols-2 gap-2">
       <div id="desktop-qa-sos" class="bg-[#1E2024] hover:bg-[#25282e] border border-red-500/30 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all group">
         <div class="w-7 h-7 rounded-lg bg-red-500/20 text-red-500 flex items-center justify-center text-sm mb-1.5 group-hover:scale-105 transition-transform">🚨</div>
-        <div class="text-[11.5px] font-bold text-white leading-tight">One-Tap SOS</div>
-        <div class="text-[9.5px] text-red-400 font-mono mt-0.5">Direct Beacon</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight truncate">One-Tap SOS</div>
+        <div class="text-[9.5px] text-red-400 font-mono mt-0.5 truncate">Direct Beacon</div>
       </div>
 
       <div id="desktop-qa-timer" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
         <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm mb-1.5">⏱️</div>
-        <div class="text-[11.5px] font-bold text-white leading-tight">Panic Timer</div>
-        <div class="text-[9.5px] text-amber-300 font-mono mt-0.5">Dead-Man Switch</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight truncate">Panic Timer</div>
+        <div class="text-[9.5px] text-amber-300 font-mono mt-0.5 truncate">Dead-Man Switch</div>
       </div>
 
       <div id="desktop-qa-medical" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
         <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm mb-1.5">📋</div>
-        <div class="text-[11.5px] font-bold text-white leading-tight">Medical ID</div>
-        <div class="text-[9.5px] text-blue-300 font-mono mt-0.5">Blood &amp; TPA Card</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight truncate">Medical ID</div>
+        <div class="text-[9.5px] text-blue-300 font-mono mt-0.5 truncate">Blood &amp; TPA Card</div>
       </div>
 
       <div id="desktop-qa-firstaid" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
         <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm mb-1.5">🩺</div>
-        <div class="text-[11.5px] font-bold text-white leading-tight">First-Aid AI</div>
-        <div class="text-[9.5px] text-emerald-300 font-mono mt-0.5">Voice Protocols</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight truncate">First-Aid AI</div>
+        <div class="text-[9.5px] text-emerald-300 font-mono mt-0.5 truncate">Voice Protocols</div>
       </div>
     </div>
 
@@ -461,19 +461,19 @@
         <span class="text-[10px] text-[#D7FB38] font-mono font-bold">1-Tap Dial</span>
       </div>
       <div class="grid grid-cols-4 gap-1.5">
-        <a href="tel:112" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+        <a href="tel:112" class="p-1.5 sm:p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
           <div class="text-[13px] font-mono font-bold text-[#D7FB38]">112</div>
           <div class="text-[9px] text-neutral-400 truncate">National</div>
         </a>
-        <a href="tel:108" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+        <a href="tel:108" class="p-1.5 sm:p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
           <div class="text-[13px] font-mono font-bold text-emerald-400">108</div>
           <div class="text-[9px] text-neutral-400 truncate">Ambulance</div>
         </a>
-        <a href="tel:102" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+        <a href="tel:102" class="p-1.5 sm:p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
           <div class="text-[13px] font-mono font-bold text-white">102</div>
           <div class="text-[9px] text-neutral-400 truncate">Infant/Mat</div>
         </a>
-        <a href="tel:100" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+        <a href="tel:100" class="p-1.5 sm:p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
           <div class="text-[13px] font-mono font-bold text-blue-400">100</div>
           <div class="text-[9px] text-neutral-400 truncate">Police</div>
         </a>
