@@ -752,17 +752,314 @@ dialog[open] {
     box-shadow: 0 0 22px rgba(239, 68, 68, 0.65) !important;
   }
 
-  /* 6. Modals & Dialogs Responsiveness on Mobile */
+  /* 6. Dribbble-Inspired Mobile Floating Modal & Dialog Theme */
+  dialog::backdrop {
+    background: rgba(10, 11, 14, 0.85) !important;
+    backdrop-filter: blur(16px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.8) !important;
+  }
+
   dialog {
     max-width: 94vw !important;
-    max-height: 86vh !important;
+    max-height: 88vh !important;
     border-radius: 28px !important;
-    padding: 1.25rem !important;
+    padding: 1.25rem 1.15rem !important;
+    background: linear-gradient(180deg, #181A20 0%, #121316 100%) !important;
+    backdrop-filter: blur(32px) saturate(2) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
   }
-  /* Helplines modal on mobile */
-  #helplines-modal {
-    max-width: 94vw !important;
-    border-radius: 28px !important;
-    padding: 1.25rem !important;
+
+  dialog h2, dialog h3, dialog h4 {
+    color: #FFFFFF !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  dialog p, dialog label {
+    color: #94A3B8 !important;
+  }
+
+  /* Sleek Minimalist Circular Close Button */
+  dialog button[id*="close"],
+  dialog button[onclick*="close"] {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9999px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+  }
+
+  dialog button[id*="close"]:active,
+  dialog button[onclick*="close"]:active {
+    transform: scale(0.9) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  dialog button[id*="close"] span,
+  dialog button[onclick*="close"] span {
+    font-size: 18px !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Sub-tabs strip (SOS, Health, etc.) */
+  dialog .sos-tab-btn,
+  dialog .health-tab-btn {
+    background: #1E2024 !important;
+    color: #94A3B8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 9999px !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 0.45rem 0.9rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  dialog .sos-tab-btn.active,
+  dialog .health-tab-btn.active {
+    background: #D7FB38 !important;
+    color: #121316 !important;
+    font-weight: 800 !important;
+    border: 1px solid #D7FB38 !important;
+    box-shadow: 0 0 16px rgba(215, 251, 56, 0.35) !important;
+  }
+
+  dialog .sos-tab-btn.active span,
+  dialog .health-tab-btn.active span {
+    color: #121316 !important;
+  }
+
+  /* Offline Badge inside SOS tab */
+  dialog .sos-tab-btn span.rounded-full {
+    font-size: 9.5px !important;
+    padding: 0.12rem 0.45rem !important;
+    border-radius: 9999px !important;
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #34D399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+    font-weight: 800 !important;
+    margin-left: 0.25rem !important;
+  }
+
+  dialog .sos-tab-btn.active span.rounded-full {
+    background: #121316 !important;
+    color: #D7FB38 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Internal Card Tiles inside Dialog */
+  dialog .glass-panel,
+  dialog [class*="bg-white/"],
+  dialog .p-3\.5.rounded-2xl {
+    background: #1E2024 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+    border-radius: 18px !important;
+  }
+
+  /* Form Inputs, Selects & Textareas */
+  dialog input,
+  dialog select,
+  dialog textarea {
+    background: #25282E !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+    font-size: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  dialog input:focus,
+  dialog select:focus,
+  dialog textarea:focus {
+    border-color: #D7FB38 !important;
+    box-shadow: 0 0 0 2px rgba(215, 251, 56, 0.25) !important;
+    outline: none !important;
+  }
+
+  dialog input::placeholder {
+    color: #64748B !important;
+  }
+
+  /* Panic Interval Buttons (20 min, 40 min, 60 min) */
+  dialog .panic-interval-btn {
+    background: #1E2024 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    border-radius: 18px !important;
+    padding: 0.75rem 0.5rem !important;
+    transition: all 0.2s ease !important;
+  }
+
+  dialog .panic-interval-btn span:first-child {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+  }
+
+  dialog .panic-interval-btn span:last-child {
+    color: #94A3B8 !important;
+  }
+
+  dialog .panic-interval-btn.active {
+    background: rgba(215, 251, 56, 0.12) !important;
+    border: 2px solid #D7FB38 !important;
+    box-shadow: 0 0 16px rgba(215, 251, 56, 0.25) !important;
+  }
+
+  dialog .panic-interval-btn.active span:first-child,
+  dialog .panic-interval-btn.active span:last-child {
+    color: #D7FB38 !important;
+  }
+
+  /* Primary Neon Buttons */
+  dialog #start-panic-timer-btn,
+  dialog #modal-route-btn,
+  dialog #save-settings-btn,
+  dialog #search-location-btn,
+  dialog button[type="submit"]:not(.bg-red-600) {
+    background: #D7FB38 !important;
+    color: #121316 !important;
+    font-weight: 800 !important;
+    border-radius: 18px !important;
+    border: none !important;
+    box-shadow: 0 4px 18px rgba(215, 251, 56, 0.35) !important;
+  }
+
+  dialog #start-panic-timer-btn span,
+  dialog #modal-route-btn span {
+    color: #121316 !important;
+  }
+
+  dialog #start-panic-timer-btn:active,
+  dialog #modal-route-btn:active,
+  dialog #save-settings-btn:active,
+  dialog #search-location-btn:active {
+    transform: scale(0.97) !important;
+  }
+
+  /* Live SOS Confirm Button */
+  dialog #sos-confirm-btn {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    border-radius: 18px !important;
+    border: none !important;
+    box-shadow: 0 6px 22px rgba(239, 68, 68, 0.5) !important;
+  }
+
+  /* Secondary Buttons (Cancel / Stop) */
+  dialog #sos-modal-cancel,
+  dialog #stop-panic-timer-btn,
+  dialog #retry-gps-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #CBD5E1 !important;
+    border-radius: 14px !important;
+  }
+
+  /* Active Panic Guardian Banner & Card */
+  dialog #panic-timer-active-card > div:first-child {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    border-radius: 20px !important;
+  }
+
+  dialog #panic-countdown-display {
+    color: #F87171 !important;
+  }
+
+  /* Helplines Modal on Mobile */
+  #helplines-modal a.glass-panel {
+    background: #1E2024 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    color: #FFFFFF !important;
+  }
+
+  #helplines-modal a span.font-body {
+    color: #CBD5E1 !important;
+  }
+
+  #helplines-modal a span.font-headline {
+    color: #D7FB38 !important;
+    font-weight: 800 !important;
+  }
+
+  #helplines-modal a[href="tel:112"] {
+    background: rgba(239, 68, 68, 0.18) !important;
+    border: 1px solid rgba(239, 68, 68, 0.45) !important;
+  }
+
+  #helplines-modal a[href="tel:112"] span {
+    color: #F87171 !important;
+  }
+
+  /* Place Details Badges on Mobile */
+  #modal-place-status {
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #34D399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  }
+
+  #modal-place-distance {
+    background: rgba(215, 251, 56, 0.15) !important;
+    color: #D7FB38 !important;
+    border: 1px solid rgba(215, 251, 56, 0.3) !important;
+  }
+
+  #modal-place-rating {
+    background: rgba(245, 158, 11, 0.2) !important;
+    color: #FBBF24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  }
+
+  /* Saved Emergency Contacts list */
+  #sos-contacts-list li {
+    background: #25282E !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    color: #FFFFFF !important;
+  }
+
+  #sos-contacts-list li span:first-child {
+    color: #FFFFFF !important;
+  }
+
+  #sos-contacts-list li span:last-child {
+    color: #94A3B8 !important;
+  }
+
+  /* First-Aid Protocols in Modal */
+  #first-aid-protocols-list > div,
+  #first-aid-protocols-list .glass-panel {
+    background: #1E2024 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+    border-radius: 18px !important;
+  }
+
+  #tab-first-aid-guide .bg-emerald-50\/80 {
+    background: rgba(16, 185, 129, 0.12) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    color: #A7F3D0 !important;
+  }
+
+  /* Dividers */
+  dialog .border-b,
+  dialog .border-t {
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 }

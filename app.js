@@ -2819,12 +2819,8 @@ function setupSOS() {
   sosTabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const targetTab = btn.getAttribute("data-tab");
-      sosTabBtns.forEach(b => {
-        b.classList.remove("active", "bg-red-50", "text-red-600", "border-red-200", "font-bold");
-        b.classList.add("bg-white/50", "text-slate-600", "border-slate-200", "font-semibold");
-      });
-      btn.classList.add("active", "bg-red-50", "text-red-600", "border-red-200", "font-bold");
-      btn.classList.remove("bg-white/50", "text-slate-600", "border-slate-200");
+      sosTabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
 
       sosModal.querySelectorAll(".sos-tab-pane").forEach(pane => {
         pane.classList.add("hidden");
@@ -2876,12 +2872,8 @@ function setupPanicTimer() {
 
   intervalBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      intervalBtns.forEach(b => {
-        b.classList.remove("active", "border-red-300", "bg-red-50", "text-red-700");
-        b.classList.add("border-slate-200", "bg-white/70", "text-slate-700");
-      });
-      btn.classList.add("active", "border-red-300", "bg-red-50", "text-red-700");
-      btn.classList.remove("border-slate-200", "bg-white/70", "text-slate-700");
+      intervalBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
       selectedMins = parseInt(btn.getAttribute("data-mins") || "20", 10);
     });
   });
