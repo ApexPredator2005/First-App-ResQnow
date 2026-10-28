@@ -45,19 +45,19 @@
     <div class="flex justify-between items-center w-full pl-2 pr-3 sm:px-5 py-2 max-w-[1600px] mx-auto">
       <div class="flex items-center gap-1.5 sm:gap-3">
         <!-- Logo Image + ResQNow CMD Text Name -->
-        <a href="#" class="flex items-center gap-2 shrink-0">
-          <img src="logo.png" alt="ResQNow Logo" class="h-8 w-auto object-contain">
-          <div class="flex items-center gap-1.5">
-            <h1 class="font-headline text-[18px] sm:text-[20px] font-extrabold text-white tracking-tight">ResQNow</h1>
+        <a href="#" class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <img src="logo.png" alt="ResQNow Logo" class="h-7 sm:h-8 w-auto object-contain">
+          <div class="flex items-center gap-1 sm:gap-1.5">
+            <h1 class="font-headline text-[16px] sm:text-[20px] font-extrabold text-white tracking-tight">ResQNow</h1>
             <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-black bg-[#D7FB38] text-[#121316] tracking-wider uppercase">CMD</span>
           </div>
         </a>
         
         <!-- Live Telemetry / GPS Location Display -->
-        <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1E2024] border border-white/10 text-[11px] font-semibold text-slate-200 ml-2 sm:ml-3 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-[#D7FB38] animate-ping shrink-0"></span>
-          <span id="coordinates-display" class="truncate max-w-[110px] sm:max-w-none text-slate-200">Acquiring GPS...</span>
-          <button id="open-location-modal-btn" class="text-[11px] text-[#D7FB38] font-bold ml-0.5 hover:underline shrink-0">Change</button>
+        <div class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full bg-[#1E2024] border border-white/10 text-[10px] sm:text-[11px] font-semibold text-slate-200 ml-1 sm:ml-3 shadow-sm min-w-0">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#D7FB38] animate-ping shrink-0"></span>
+          <span id="coordinates-display" class="truncate max-w-[70px] min-[380px]:max-w-[100px] sm:max-w-none text-slate-200">Acquiring GPS...</span>
+          <button id="open-location-modal-btn" class="text-[10px] sm:text-[11px] text-[#D7FB38] font-bold ml-0.5 hover:underline shrink-0">Change</button>
         </div>
       </div>
 
@@ -70,10 +70,16 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-2 sm:gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-3">
         <div id="spinner" class="spinner hidden"></div>
         <span id="feed-status" class="text-xs font-mono font-medium text-emerald-400 hidden 2xl:inline-block"></span>
         
+        <!-- Mobile Header SOS Quick Trigger Button -->
+        <button id="mobile-sos-header-btn" class="flex md:hidden items-center gap-1 px-2.5 py-1 rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold text-[10.5px] shadow-md shadow-red-600/50 active:scale-95 transition-all cursor-pointer shrink-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+          <span>SOS</span>
+        </button>
+
         <!-- Desktop Code-Red SOS Trigger Button -->
         <button id="desktop-sos-header-btn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-lg shadow-red-600/40 active:scale-95 transition-all cursor-pointer">
           <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
@@ -91,8 +97,8 @@
   </header>
 
   <!-- Mobile Pull-to-Refresh Indicator Toast -->
-  <div id="pull-refresh-indicator" class="fixed top-14 left-1/2 -translate-x-1/2 z-50 glass-panel rounded-full px-4 py-1.5 border border-white/70 shadow-lg text-xs font-bold text-slate-700 hidden flex items-center gap-2 transition-all duration-300">
-    <span class="material-symbols-outlined text-blue-600 text-sm" id="pull-refresh-spinner">sync</span>
+  <div id="pull-refresh-indicator" class="fixed top-14 left-1/2 -translate-x-1/2 z-50 rounded-full px-4 py-1.5 bg-[#16181D]/95 backdrop-blur-xl border border-white/15 shadow-xl text-xs font-bold text-slate-200 hidden flex items-center gap-2 transition-all duration-300">
+    <span class="material-symbols-outlined text-[#D7FB38] text-sm" id="pull-refresh-spinner">sync</span>
     <span id="pull-refresh-text">Pull to refresh facilities...</span>
   </div>
 
@@ -101,10 +107,10 @@
     <div class="pointer-events-auto flex flex-col gap-4 pb-20">
       <div class="mobile-drawer-handle hidden md:hidden"></div>
 
-      <!-- Mobile Quick Search Input (Dribbble Clean Pill Style) -->
+      <!-- Mobile Quick Search Input (Dribbble Clean Pill Style - Tactical Obsidian) -->
       <div class="relative flex items-center md:hidden mb-1">
         <span class="material-symbols-outlined text-neutral-400 absolute left-3.5 text-[18px]">search</span>
-        <input id="mobile-places-search" class="w-full h-10 pl-10 pr-4 bg-white/95 border border-black/10 rounded-full text-xs text-slate-800 placeholder-neutral-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D7FB38]" placeholder="Search 24/7 ERs, ICU beds, oxygen..." type="text">
+        <input id="mobile-places-search" class="w-full h-10 pl-10 pr-4 bg-[#1B1D22] border border-white/10 rounded-full text-xs text-white placeholder-neutral-400 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#D7FB38]" placeholder="Search 24/7 ERs, ICU beds, oxygen..." type="text">
       </div>
 
       <!-- High-Contrast Metric Cards (Dribbble Electric Neon Lime Style) -->

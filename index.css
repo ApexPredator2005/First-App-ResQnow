@@ -539,7 +539,7 @@ dialog[open] {
     font-size: 22px !important;
   }
 
-  /* 2. Top Glass Header Bar - Sleek Mobile Height & Clear Typography */
+  /* 2. Top Glass Header Bar - Tactical Obsidian & Neon Mobile Height */
   header {
     position: fixed !important;
     top: 0 !important;
@@ -548,10 +548,12 @@ dialog[open] {
     height: 54px !important;
     z-index: 40 !important;
     padding: 0.35rem 0.5rem !important;
-    background: rgba(255, 255, 255, 0.65) !important;
-    backdrop-filter: blur(32px) saturate(1.8) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(1.8) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.7) !important;
+    background: rgba(18, 19, 22, 0.94) !important;
+    backdrop-filter: blur(28px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    color: #FFFFFF !important;
   }
 
   header h1 {

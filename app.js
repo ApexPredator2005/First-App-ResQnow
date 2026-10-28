@@ -3857,6 +3857,7 @@ setupMobileRedesignUI();
 function setupDesktopRedesignUI() {
   const desktopSearch = document.getElementById("desktop-global-search");
   const desktopSosBtn = document.getElementById("desktop-sos-header-btn");
+  const mobileSosBtn = document.getElementById("mobile-sos-header-btn");
   const desktopQaSos = document.getElementById("desktop-qa-sos");
   const desktopQaTimer = document.getElementById("desktop-qa-timer");
   const desktopQaMedical = document.getElementById("desktop-qa-medical");
@@ -3907,8 +3908,11 @@ function setupDesktopRedesignUI() {
     });
   }
 
-  // 3. Desktop Code-Red SOS Header Trigger
+  // 3. Desktop & Mobile Code-Red SOS Header Trigger
   desktopSosBtn?.addEventListener("click", () => {
+    openSosModalWithTab("sos-broadcast");
+  });
+  mobileSosBtn?.addEventListener("click", () => {
     openSosModalWithTab("sos-broadcast");
   });
 
