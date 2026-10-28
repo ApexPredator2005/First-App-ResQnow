@@ -40,39 +40,51 @@
     <div id="map" class="w-full h-full"></div>
   </div>
 
-  <!-- Top Glass Navigation Bar -->
-  <header class="glass-panel border-b border-white/40 shadow-sm fixed top-0 w-full z-40 animate-fade-in-up">
+  <!-- Top Sleek Glass Navigation Bar (Tactical Obsidian & Neon Command Bar) -->
+  <header class="glass-panel border-b border-white/10 shadow-xl fixed top-0 w-full z-40 animate-fade-in-up bg-[#121316]/90 backdrop-blur-xl text-white">
     <div class="flex justify-between items-center w-full pl-2 pr-3 sm:px-5 py-2 max-w-[1600px] mx-auto">
       <div class="flex items-center gap-1.5 sm:gap-3">
-        <!-- Logo Image + ResQNow Text Name -->
-        <a href="#" class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <!-- Logo Image + ResQNow CMD Text Name -->
+        <a href="#" class="flex items-center gap-2 shrink-0">
           <img src="logo.png" alt="ResQNow Logo" class="h-8 w-auto object-contain">
-          <h1 class="font-headline text-[19px] sm:text-[20px] font-bold text-slate-800 tracking-tight">ResQNow</h1>
+          <div class="flex items-center gap-1.5">
+            <h1 class="font-headline text-[18px] sm:text-[20px] font-extrabold text-white tracking-tight">ResQNow</h1>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-black bg-[#D7FB38] text-[#121316] tracking-wider uppercase">CMD</span>
+          </div>
         </a>
         
-        <!-- Live GPS Location Display -->
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/60 border border-white/70 text-[11px] font-semibold text-slate-700 ml-2 sm:ml-3 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
-          <span id="coordinates-display" class="truncate max-w-[110px] sm:max-w-none">Acquiring GPS...</span>
-          <button id="open-location-modal-btn" class="text-[11px] text-blue-600 font-bold ml-0.5 hover:underline shrink-0">Change</button>
+        <!-- Live Telemetry / GPS Location Display -->
+        <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1E2024] border border-white/10 text-[11px] font-semibold text-slate-200 ml-2 sm:ml-3 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-[#D7FB38] animate-ping shrink-0"></span>
+          <span id="coordinates-display" class="truncate max-w-[110px] sm:max-w-none text-slate-200">Acquiring GPS...</span>
+          <button id="open-location-modal-btn" class="text-[11px] text-[#D7FB38] font-bold ml-0.5 hover:underline shrink-0">Change</button>
         </div>
       </div>
 
-      <!-- Motivational Health Quotes Display in Top Bar -->
-      <div class="hidden md:flex items-center gap-1.5 max-w-[240px] sm:max-w-md px-3 py-1 rounded-full bg-white/75 border border-white/80 text-[11.5px] text-slate-800 shadow-sm mx-auto truncate shrink-0">
-        <span class="text-amber-500 text-xs shrink-0">💡</span>
-        <span id="quote-text" class="font-semibold italic text-slate-700 truncate transition-all duration-500">Loading motivational quote...</span>
+      <!-- Center Omnibar on Desktop: Global Search with ⌘K -->
+      <div class="hidden lg:flex items-center gap-2 max-w-md w-full mx-4">
+        <div class="relative w-full">
+          <span class="material-symbols-outlined absolute left-3 top-2 text-[17px] text-neutral-400">search</span>
+          <input id="desktop-global-search" type="text" placeholder="Search ERs, trauma bays, blood banks, oxygen..." class="w-full h-8 pl-9 pr-12 bg-[#1B1D22] border border-white/10 rounded-full text-xs text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#D7FB38]">
+          <kbd class="absolute right-2.5 top-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#121316] text-neutral-400 border border-white/10 rounded">⌘K</kbd>
+        </div>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
         <div id="spinner" class="spinner hidden"></div>
-        <span id="feed-status" class="text-xs font-medium text-slate-500 hidden md:inline-block"></span>
+        <span id="feed-status" class="text-xs font-mono font-medium text-emerald-400 hidden 2xl:inline-block"></span>
         
-        <button id="open-health-btn" class="px-3.5 py-1.5 rounded-full glass-panel interactive-element text-slate-800 font-bold text-xs border border-white/60 shadow-sm hidden md:block">
-          My Health Profile
+        <!-- Desktop Code-Red SOS Trigger Button -->
+        <button id="desktop-sos-header-btn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-lg shadow-red-600/40 active:scale-95 transition-all cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+          <span>CODE-RED SOS</span>
         </button>
-        <button id="open-settings-btn" class="p-2 rounded-full glass-panel interactive-element text-slate-700 border border-white/60 shadow-sm hidden md:flex items-center justify-center">
-          <span class="material-symbols-outlined text-[18px]">settings</span>
+
+        <button id="open-health-btn" class="px-3.5 py-1.5 rounded-full bg-[#1E2024] hover:bg-[#25282e] text-white font-bold text-xs border border-white/10 shadow-sm hidden md:block active:scale-95 transition-all cursor-pointer">
+          Medical Profile
+        </button>
+        <button id="open-settings-btn" class="w-8 h-8 rounded-full bg-[#1E2024] hover:bg-[#25282e] text-neutral-300 hover:text-white border border-white/10 shadow-sm hidden md:flex items-center justify-center active:scale-95 transition-all cursor-pointer" title="Settings">
+          <span class="material-symbols-outlined text-[17px]">settings</span>
         </button>
       </div>
     </div>
@@ -95,8 +107,8 @@
         <input id="mobile-places-search" class="w-full h-10 pl-10 pr-4 bg-white/95 border border-black/10 rounded-full text-xs text-slate-800 placeholder-neutral-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D7FB38]" placeholder="Search 24/7 ERs, ICU beds, oxygen..." type="text">
       </div>
 
-      <!-- Mobile Dual High-Contrast Metric Cards (Dribbble Electric Neon Lime Style) -->
-      <div class="grid grid-cols-2 gap-2.5 md:hidden">
+      <!-- High-Contrast Metric Cards (Dribbble Electric Neon Lime Style) -->
+      <div class="grid grid-cols-2 gap-2.5">
         <!-- Metric Card 1: Nearest 24/7 ER -->
         <div id="metric-card-er" class="bg-[#D7FB38] text-[#121316] rounded-[22px] p-3.5 flex flex-col justify-between shadow-lg shadow-[#D7FB38]/20 border border-[#b3d400]/40 relative overflow-hidden cursor-pointer active:scale-95 transition-all">
           <div class="flex items-center justify-between mb-2">
@@ -135,7 +147,7 @@
       </div>
 
       <!-- Trauma Capacity Advisory Card (Dribbble Announcements Style) -->
-      <div id="trauma-advisory-card" class="bg-[#1B1D22] border border-white/10 rounded-[22px] p-3.5 relative overflow-hidden shadow-xl text-white md:hidden">
+      <div id="trauma-advisory-card" class="bg-[#1B1D22] border border-white/10 rounded-[22px] p-3.5 relative overflow-hidden shadow-xl text-white">
         <div class="flex items-center justify-between mb-1.5">
           <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
             <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
@@ -324,6 +336,111 @@
           </a>
         </div>
       </section>
+    </div>
+  </aside>
+
+  <!-- 3. DESKTOP RIGHT TACTICAL DOCK (Obsidian Command Dock for Wide Screens >= 1280px) -->
+  <aside id="desktop-right-dock" class="hidden xl:flex w-[300px] shrink-0 bg-[#16181D]/90 backdrop-blur-2xl border-l border-white/10 flex-col p-4 space-y-4 overflow-y-auto custom-scroll fixed right-0 top-14 bottom-0 z-20 pointer-events-auto">
+    <!-- Header: Tactical Actions -->
+    <div class="flex items-center justify-between pb-2 border-b border-white/10">
+      <div>
+        <div class="text-[13px] font-bold text-white tracking-tight">Tactical Actions</div>
+        <div class="text-[9.5px] text-neutral-400 font-mono">MISSION READINESS HUD</div>
+      </div>
+      <div class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+        MESH SYNCED
+      </div>
+    </div>
+
+    <!-- 2x2 Emergency Quick Actions Grid -->
+    <div class="grid grid-cols-2 gap-2">
+      <div id="desktop-qa-sos" class="bg-[#1E2024] hover:bg-[#25282e] border border-red-500/30 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all group">
+        <div class="w-7 h-7 rounded-lg bg-red-500/20 text-red-500 flex items-center justify-center text-sm mb-1.5 group-hover:scale-105 transition-transform">🚨</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight">One-Tap SOS</div>
+        <div class="text-[9.5px] text-red-400 font-mono mt-0.5">Direct Beacon</div>
+      </div>
+
+      <div id="desktop-qa-timer" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
+        <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm mb-1.5">⏱️</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight">Panic Timer</div>
+        <div class="text-[9.5px] text-amber-300 font-mono mt-0.5">Dead-Man Switch</div>
+      </div>
+
+      <div id="desktop-qa-medical" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
+        <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm mb-1.5">📋</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight">Medical ID</div>
+        <div class="text-[9.5px] text-blue-300 font-mono mt-0.5">Blood &amp; TPA Card</div>
+      </div>
+
+      <div id="desktop-qa-firstaid" class="bg-[#1E2024] hover:bg-[#25282e] border border-white/10 p-2.5 rounded-xl cursor-pointer active:scale-95 transition-all">
+        <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm mb-1.5">🩺</div>
+        <div class="text-[11.5px] font-bold text-white leading-tight">First-Aid AI</div>
+        <div class="text-[9.5px] text-emerald-300 font-mono mt-0.5">Voice Protocols</div>
+      </div>
+    </div>
+
+    <!-- Offline AI Voice Assistant Card -->
+    <div class="bg-[#1E2024] border border-white/10 rounded-2xl p-3 flex flex-col gap-2.5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[17px] text-[#D7FB38]">mic</span>
+          <span class="text-xs font-bold text-white">Voice Assistant</span>
+        </div>
+        <span class="text-[9.5px] font-mono text-emerald-400">Offline Ready</span>
+      </div>
+      <div class="bg-[#16181D] p-2 rounded-xl border border-white/5 text-[11px] text-neutral-300 italic">
+        "Route nearest pediatric ICU with oxygen stock"
+      </div>
+      <button id="desktop-cpr-btn" class="w-full py-1.5 px-2.5 rounded-xl bg-[#25282E] hover:bg-[#2c3038] border border-white/10 text-white text-[11px] font-bold flex items-center justify-between transition-colors cursor-pointer">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#D7FB38] animate-ping"></span>
+          <span>CPR Metronome (110 BPM)</span>
+        </div>
+        <span class="material-symbols-outlined text-[15px] text-[#D7FB38]">play_arrow</span>
+      </button>
+    </div>
+
+    <!-- National Emergency Helplines Direct-Dial Strip -->
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-400">National Emergency Lines</span>
+        <span class="text-[10px] text-[#D7FB38] font-mono font-bold">1-Tap Dial</span>
+      </div>
+      <div class="grid grid-cols-4 gap-1.5">
+        <a href="tel:112" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+          <div class="text-[13px] font-mono font-bold text-[#D7FB38]">112</div>
+          <div class="text-[9px] text-neutral-400 truncate">National</div>
+        </a>
+        <a href="tel:108" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+          <div class="text-[13px] font-mono font-bold text-emerald-400">108</div>
+          <div class="text-[9px] text-neutral-400 truncate">Ambulance</div>
+        </a>
+        <a href="tel:102" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+          <div class="text-[13px] font-mono font-bold text-white">102</div>
+          <div class="text-[9px] text-neutral-400 truncate">Infant/Mat</div>
+        </a>
+        <a href="tel:100" class="p-2 rounded-xl bg-[#1E2024] hover:bg-[#25282e] border border-white/10 text-center transition-all group">
+          <div class="text-[13px] font-mono font-bold text-blue-400">100</div>
+          <div class="text-[9px] text-neutral-400 truncate">Police</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Active Dispatch Mesh Status Footer Badge -->
+    <div class="mt-auto bg-[#121316] border border-white/10 rounded-2xl p-3 flex flex-col gap-1.5">
+      <div class="flex items-center justify-between">
+        <span class="text-[10.5px] font-mono text-neutral-400">DISPATCH MESH</span>
+        <span class="text-[10px] font-mono text-emerald-400 flex items-center gap-1 font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          ACTIVE SYNC
+        </span>
+      </div>
+      <p class="text-[11px] text-neutral-300 leading-tight">
+        12 ambulances pinging within 5km radius • 99.9% Mesh ping
+      </p>
+      <div class="w-full bg-[#1E2024] h-1.5 rounded-full overflow-hidden mt-1">
+        <div class="bg-[#D7FB38] h-full rounded-full w-[88%] shadow-[0_0_8px_#D7FB38]"></div>
+      </div>
     </div>
   </aside>
 

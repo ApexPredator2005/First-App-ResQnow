@@ -6,28 +6,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 :root {
-  --color-surface: #f9f9fe;
-  --color-surface-dim: #d9dade;
-  --color-surface-bright: #f9f9fe;
-  --color-surface-container: #ededf2;
-  --color-surface-container-high: #e8e8ed;
+  --color-surface: #121316;
+  --color-surface-dim: #0d0e11;
+  --color-surface-bright: #1b1b1f;
+  --color-surface-container: #1e2024;
+  --color-surface-container-high: #25282e;
   
-  --color-on-surface: #1a1c1f;
-  --color-on-surface-variant: #414755;
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #94a3b8;
   
-  --color-primary: #0058bc;
-  --color-primary-container: #0070eb;
-  --color-on-primary: #ffffff;
+  --color-primary: #D7FB38;
+  --color-primary-container: #b3d400;
+  --color-on-primary: #121316;
   
-  --color-secondary: #bc000a;
-  --color-secondary-container: #e2241f;
-  --color-tertiary: #894d00;
+  --color-secondary: #10b981;
+  --color-secondary-container: #059669;
+  --color-tertiary: #ef4444;
   
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
+  --color-error: #ef4444;
+  --color-error-container: #991b1b;
 
-  --font-headline: 'Hanken Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-headline: 'Plus Jakarta Sans', 'Hanken Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
 * {
@@ -48,7 +48,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Background Ethereal Shader & Map Texture */
+/* Background Ethereal Shader & Tactical Dark Canvas */
 .shader-bg {
   position: fixed;
   top: 0;
@@ -57,31 +57,33 @@ html, body {
   height: 100vh;
   z-index: -2;
   background-image: 
-      radial-gradient(at 0% 0%, rgba(255, 240, 245, 0.9) 0px, transparent 60%),
-      radial-gradient(at 100% 0%, rgba(230, 245, 255, 0.9) 0px, transparent 60%),
-      radial-gradient(at 100% 100%, rgba(255, 245, 220, 0.9) 0px, transparent 60%),
-      radial-gradient(at 0% 100%, rgba(245, 230, 255, 0.9) 0px, transparent 60%);
+      radial-gradient(at 0% 0%, rgba(215, 251, 56, 0.08) 0px, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.06) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(239, 68, 68, 0.06) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(18, 19, 22, 0.98) 0px, transparent 60%);
   background-attachment: fixed;
-  background-color: #fbfbfc;
+  background-color: #121316;
 }
 
 /* Glassmorphism Panels & Tiles */
 .glass-panel {
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  background-color: rgba(22, 24, 29, 0.88);
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
 }
 
 .glass-tile {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.68));
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06), 0 0 20px rgba(255, 255, 255, 0.6);
-  border-radius: 24px;
-  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(30, 32, 36, 0.95), rgba(22, 24, 28, 0.9));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 14px 18px;
+  color: #FFFFFF;
 }
 
 /* Category Pastel Glass Cards - Compact Proportions */
@@ -118,9 +120,69 @@ html, body {
 
 /* Active Category Selection Glow */
 .pill.active {
-  outline: 2.5px solid rgba(0, 88, 188, 0.7);
+  outline: 2.5px solid #D7FB38 !important;
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 24px rgba(0, 88, 188, 0.25);
+  box-shadow: 0 0 24px rgba(215, 251, 56, 0.45) !important;
+}
+
+/* Global Obsidian Facility Card & Action Styling */
+.place-card, #places-feed li {
+  background: #1B1D22 !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 12px 14px !important;
+  border-radius: 18px !important;
+  margin-bottom: 10px !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.place-card:hover, #places-feed li:hover {
+  background: #23262D !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.place-card h3, #places-feed li h3 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: #ffffff !important;
+}
+
+.place-card p, #places-feed li p {
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  color: #94a3b8 !important;
+}
+
+.place-card span, #places-feed li span {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #cbd5e1 !important;
+}
+
+/* Electric Neon Lime Quick Route Trigger */
+.btn-route, #places-feed .btn-route {
+  background-color: #D7FB38 !important;
+  color: #121316 !important;
+  font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(215, 251, 56, 0.35) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-route:hover, #places-feed .btn-route:hover {
+  background-color: #e4ff57 !important;
+  box-shadow: 0 4px 18px rgba(215, 251, 56, 0.5) !important;
+  transform: scale(1.03);
+}
+
+.btn-route:active, #places-feed .btn-route:active {
+  transform: scale(0.96) !important;
 }
 
 /* Interactive Elements */
@@ -129,7 +191,7 @@ html, body {
 }
 .interactive-element:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 .interactive-element:active {
   transform: scale(0.97);
@@ -148,15 +210,15 @@ html, body {
   width: 5px;
 }
 .custom-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 88, 188, 0.25);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 88, 188, 0.45);
+  background: #D7FB38;
 }
 
 /* ============================================================================ */

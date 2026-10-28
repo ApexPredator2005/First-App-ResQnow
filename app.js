@@ -3850,3 +3850,101 @@ function setupMobileRedesignUI() {
 }
 
 setupMobileRedesignUI();
+
+// ============================================================================
+// DESKTOP COMMAND CENTER INTERACTIONS (STITCH CLINICAL KINETIC THEME)
+// ============================================================================
+function setupDesktopRedesignUI() {
+  const desktopSearch = document.getElementById("desktop-global-search");
+  const desktopSosBtn = document.getElementById("desktop-sos-header-btn");
+  const desktopQaSos = document.getElementById("desktop-qa-sos");
+  const desktopQaTimer = document.getElementById("desktop-qa-timer");
+  const desktopQaMedical = document.getElementById("desktop-qa-medical");
+  const desktopQaFirstAid = document.getElementById("desktop-qa-firstaid");
+  const desktopCprBtn = document.getElementById("desktop-cpr-btn");
+
+  function openSosModalWithTab(tabId) {
+    const sosModal = document.getElementById("sos-modal");
+    if (!sosModal) return;
+    const tabBtn = sosModal.querySelector(`.sos-tab-btn[data-tab="${tabId}"]`);
+    if (tabBtn) tabBtn.click();
+    try {
+      if (!sosModal.open) sosModal.showModal();
+    } catch (err) {
+      console.warn("Error opening SOS modal:", err);
+    }
+  }
+
+  // 1. Keyboard Shortcut ⌘K / Ctrl+K for Global Omnibar Focus
+  window.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      if (desktopSearch) {
+        desktopSearch.focus();
+        desktopSearch.select();
+      }
+    }
+  });
+
+  // 2. Desktop Omnibar Live Search
+  if (desktopSearch) {
+    desktopSearch.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const items = document.querySelectorAll("#places-feed li");
+      let matchCount = 0;
+      items.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = "";
+          matchCount++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+      if (DOM.feedStatus && q) {
+        DOM.feedStatus.textContent = `Located ${matchCount} match${matchCount === 1 ? '' : 'es'} for "${q}"`;
+      }
+    });
+  }
+
+  // 3. Desktop Code-Red SOS Header Trigger
+  desktopSosBtn?.addEventListener("click", () => {
+    openSosModalWithTab("sos-broadcast");
+  });
+
+  // 4. Desktop Right Dock Quick Actions
+  desktopQaSos?.addEventListener("click", () => {
+    openSosModalWithTab("sos-broadcast");
+  });
+  desktopQaTimer?.addEventListener("click", () => {
+    openSosModalWithTab("panic-timer");
+  });
+  desktopQaMedical?.addEventListener("click", () => {
+    const openHealthBtn = document.getElementById("open-health-btn");
+    if (openHealthBtn) openHealthBtn.click();
+  });
+  desktopQaFirstAid?.addEventListener("click", () => {
+    openSosModalWithTab("first-aid-guide");
+  });
+
+  // 5. CPR Metronome Audio Cadence (110 BPM)
+  let cprInterval = null;
+  desktopCprBtn?.addEventListener("click", () => {
+    if (cprInterval) {
+      clearInterval(cprInterval);
+      cprInterval = null;
+      desktopCprBtn.classList.remove("border-[#D7FB38]", "text-[#D7FB38]");
+      showToast("CPR Metronome paused", "info");
+    } else {
+      desktopCprBtn.classList.add("border-[#D7FB38]", "text-[#D7FB38]");
+      showToast("CPR Metronome active: 110 BPM (Push hard & fast in center of chest)", "warning");
+      const intervalMs = Math.round(60000 / 110);
+      playWarningBeep();
+      cprInterval = setInterval(() => {
+        playWarningBeep();
+      }, intervalMs);
+    }
+  });
+}
+
+setupDesktopRedesignUI();
