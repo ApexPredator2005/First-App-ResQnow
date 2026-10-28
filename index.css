@@ -86,36 +86,64 @@ html, body {
   color: #FFFFFF;
 }
 
-/* Category Pastel Glass Cards - Compact Proportions */
+/* Category Emergency Services Cards - Custom Coolors Earth & Fire Palette */
+/* Palette: #DA2C38 (Fiery Scarlet), #226F54 (Forest Depths), #87C38F (Lively Mint), #F4F0BB (Sunlight Glow), #43291F (Chocolate Bark) */
 .glass-card-hospital {
-  background: linear-gradient(135deg, rgba(255, 75, 114, 0.94), rgba(235, 40, 80, 0.94));
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 4px 14px rgba(255, 75, 114, 0.35);
+  background: linear-gradient(135deg, #DA2C38 0%, #B81E29 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 6px 18px rgba(218, 44, 56, 0.35) !important;
+  color: #FFFFFF !important;
 }
+
 .glass-card-police {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(20, 42, 105, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.40);
+  background: linear-gradient(135deg, #226F54 0%, #17543F 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 6px 18px rgba(34, 111, 84, 0.35) !important;
+  color: #FFFFFF !important;
 }
+
 .glass-card-fire {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.94), rgba(225, 95, 10, 0.94));
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  background: linear-gradient(135deg, #F4F0BB 0%, #E6E1A2 100%) !important;
+  border: 1px solid rgba(67, 41, 31, 0.18) !important;
+  box-shadow: 0 6px 18px rgba(244, 240, 187, 0.35) !important;
+  color: #43291F !important;
 }
+.glass-card-fire .pill-label,
+.glass-card-fire .pill-count {
+  color: #43291F !important;
+}
+
 .glass-card-pharmacy {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.94), rgba(10, 155, 105, 0.94));
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  background: linear-gradient(135deg, #87C38F 0%, #68AB71 100%) !important;
+  border: 1px solid rgba(34, 111, 84, 0.25) !important;
+  box-shadow: 0 6px 18px rgba(135, 195, 143, 0.35) !important;
+  color: #163B2C !important;
 }
+.glass-card-pharmacy .pill-label,
+.glass-card-pharmacy .pill-count {
+  color: #163B2C !important;
+}
+
 .glass-card-vet {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.94), rgba(115, 65, 225, 0.94));
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+  background: linear-gradient(135deg, #43291F 0%, #2B1812 100%) !important;
+  border: 1px solid rgba(244, 240, 187, 0.25) !important;
+  box-shadow: 0 6px 18px rgba(67, 41, 31, 0.45) !important;
+  color: #F4F0BB !important;
 }
+.glass-card-vet .pill-label,
+.glass-card-vet .pill-count {
+  color: #F4F0BB !important;
+}
+
 .glass-card-blood {
-  background: linear-gradient(135deg, rgba(153, 27, 27, 0.95), rgba(120, 15, 15, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow: 0 4px 14px rgba(153, 27, 27, 0.40);
+  background: linear-gradient(135deg, #DA2C38 0%, #43291F 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 6px 18px rgba(218, 44, 56, 0.4) !important;
+  color: #FFFFFF !important;
+}
+.glass-card-blood .pill-label,
+.glass-card-blood .pill-count {
+  color: #FFFFFF !important;
 }
 
 /* Active Category Selection Glow */
@@ -264,48 +292,36 @@ html, body {
   z-index: 2 !important;
 }
 
-/* Category-specific Liquid Glass Inner Halo Glows */
+/* Category-specific Liquid Glass Inner Halo Glows (Coolors Palette) */
 .marker-hospital {
-  background: linear-gradient(135deg, rgba(255, 69, 58, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(255, 69, 58, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(255, 69, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(135deg, rgba(218, 44, 56, 0.35) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+  border-color: rgba(218, 44, 56, 0.7) !important;
+  box-shadow: 0 8px 24px rgba(218, 44, 56, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 .marker-police {
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(0, 122, 255, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(135deg, rgba(34, 111, 84, 0.35) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+  border-color: rgba(34, 111, 84, 0.7) !important;
+  box-shadow: 0 8px 24px rgba(34, 111, 84, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 .marker-fire_station, .marker-fire {
-  background: linear-gradient(135deg, rgba(255, 149, 0, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(255, 149, 0, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(255, 149, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(135deg, rgba(244, 240, 187, 0.55) 0%, rgba(255, 255, 255, 0.9) 100%) !important;
+  border-color: rgba(67, 41, 31, 0.5) !important;
+  box-shadow: 0 8px 24px rgba(244, 240, 187, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 .marker-pharmacy {
-  background: linear-gradient(135deg, rgba(52, 199, 89, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(52, 199, 89, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(52, 199, 89, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(135deg, rgba(135, 195, 143, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+  border-color: rgba(34, 111, 84, 0.6) !important;
+  box-shadow: 0 8px 24px rgba(135, 195, 143, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 .marker-veterinary_care, .marker-vet {
-  background: linear-gradient(135deg, rgba(175, 82, 222, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(175, 82, 222, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(175, 82, 222, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(135deg, rgba(67, 41, 31, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+  border-color: rgba(67, 41, 31, 0.7) !important;
+  box-shadow: 0 8px 24px rgba(67, 41, 31, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 .marker-blood_bank, .marker-blood {
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.28) 0%, rgba(255, 255, 255, 0.82) 100%) !important;
-  border-color: rgba(220, 38, 38, 0.6) !important;
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
-}
-.marker-pharmacy {
-  background: linear-gradient(135deg, #34c759, #248a3d);
-  box-shadow: 0 6px 18px rgba(52, 199, 89, 0.45);
-}
-.marker-veterinary_care {
-  background: linear-gradient(135deg, #af52de, #8944ab);
-  box-shadow: 0 6px 18px rgba(175, 82, 222, 0.45);
-}
-.marker-blood_bank {
-  background: linear-gradient(135deg, #ff3b30, #c41e13);
-  box-shadow: 0 6px 18px rgba(255, 59, 48, 0.45);
+  background: linear-gradient(135deg, rgba(218, 44, 56, 0.45) 0%, rgba(67, 41, 31, 0.3) 100%) !important;
+  border-color: rgba(218, 44, 56, 0.75) !important;
+  box-shadow: 0 8px 24px rgba(218, 44, 56, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 
 .marker-pulse {
@@ -323,7 +339,15 @@ html, body {
   100% { transform: scale(0.95); opacity: 0; }
 }
 
-/* Black Flowing Pulse Ring around SOS Button */
+/* Static Solid SOS Buttons - Blinking & Pulsing Disabled */
+#nav-btn-sos div,
+#mobile-sos-header-btn,
+#desktop-sos-header-btn,
+#sos-btn,
+.sos-flowing-ring::before {
+  animation: none !important;
+}
+
 .sos-flowing-ring {
   position: relative;
 }
@@ -332,28 +356,9 @@ html, body {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 2.5px solid rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-  animation: blackFlowingPulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  border: 2px solid rgba(218, 44, 56, 0.35);
+  box-shadow: 0 0 12px rgba(218, 44, 56, 0.25);
   pointer-events: none;
-}
-
-@keyframes blackFlowingPulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.9;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.35;
-    box-shadow: 0 0 14px 4px rgba(0, 0, 0, 0.25);
-  }
-  100% {
-    transform: scale(1.45);
-    opacity: 0;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
 }
 
 /* Animations */

@@ -74,15 +74,15 @@
         <div id="spinner" class="spinner hidden"></div>
         <span id="feed-status" class="text-xs font-mono font-medium text-emerald-400 hidden 2xl:inline-block"></span>
         
-        <!-- Mobile Header SOS Quick Trigger Button -->
-        <button id="mobile-sos-header-btn" class="flex md:hidden items-center gap-1 px-2.5 py-1 rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold text-[10.5px] shadow-md shadow-red-600/50 active:scale-95 transition-all cursor-pointer shrink-0">
-          <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+        <!-- Mobile Header SOS Quick Trigger Button (Static Fiery Scarlet, No Blinking) -->
+        <button id="mobile-sos-header-btn" class="flex md:hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#DA2C38] hover:bg-[#b81e29] text-white font-extrabold text-[10.5px] shadow-md shadow-[#DA2C38]/40 active:scale-95 transition-all cursor-pointer shrink-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-white shrink-0"></span>
           <span>SOS</span>
         </button>
 
-        <!-- Desktop Code-Red SOS Trigger Button -->
-        <button id="desktop-sos-header-btn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-lg shadow-red-600/40 active:scale-95 transition-all cursor-pointer">
-          <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+        <!-- Desktop Code-Red SOS Trigger Button (Static Fiery Scarlet, No Blinking) -->
+        <button id="desktop-sos-header-btn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#DA2C38] hover:bg-[#b81e29] text-white font-bold text-xs shadow-lg shadow-[#DA2C38]/40 active:scale-95 transition-all cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-white shrink-0"></span>
           <span>CODE-RED SOS</span>
         </button>
 
@@ -256,28 +256,28 @@
             <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-police">0</span>
           </button>
 
-          <button class="pill pill-fire glass-card-fire interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="fire_station">
+          <button class="pill pill-fire glass-card-fire interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#43291F] relative overflow-hidden" data-category="fire_station">
             <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Fire Stations</span>
+              <span class="font-body text-[13px] font-semibold pill-label text-[#43291F]">Fire Stations</span>
               <span class="text-base">🚒</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-fire_station">0</span>
+            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#43291F]" id="count-fire_station">0</span>
           </button>
 
-          <button class="pill pill-pharmacy glass-card-pharmacy interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="pharmacy">
+          <button class="pill pill-pharmacy glass-card-pharmacy interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#163B2C] relative overflow-hidden" data-category="pharmacy">
             <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Pharmacies</span>
+              <span class="font-body text-[13px] font-semibold pill-label text-[#163B2C]">Pharmacies</span>
               <span class="text-base">💊</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-pharmacy">0</span>
+            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#163B2C]" id="count-pharmacy">0</span>
           </button>
 
-          <button class="pill pill-vet glass-card-vet interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="veterinary_care">
+          <button class="pill pill-vet glass-card-vet interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-[#F4F0BB] relative overflow-hidden" data-category="veterinary_care">
             <div class="flex justify-between w-full items-center">
-              <span class="font-body text-[13px] font-semibold pill-label">Vet Clinics</span>
+              <span class="font-body text-[13px] font-semibold pill-label text-[#F4F0BB]">Vet Clinics</span>
               <span class="text-base">🐾</span>
             </div>
-            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count" id="count-veterinary_care">0</span>
+            <span class="font-headline text-[20px] font-extrabold mt-1 pill-count text-[#F4F0BB]" id="count-veterinary_care">0</span>
           </button>
 
           <button class="pill pill-blood glass-card-blood interactive-element rounded-2xl p-3 flex flex-col items-start gap-1 text-white relative overflow-hidden" data-category="blood_bank">
@@ -456,8 +456,8 @@
     <button id="map-location-btn" class="w-12 h-12 glass-panel rounded-2xl p-2.5 interactive-element shadow-lg border-white/70 hover:bg-white text-slate-800 flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95" title="Center on My Location">
       <span class="material-symbols-outlined text-[22px] text-blue-600">near_me</span>
     </button>
-    <!-- Emergency SOS Button -->
-    <button id="sos-btn" class="w-16 h-16 rounded-full bg-[#FF6B6B] text-white font-bold text-xs shadow-2xl interactive-element flex flex-col items-center justify-center border-2 border-white/90 sos-flowing-ring cursor-pointer transition-all hover:scale-105 active:scale-95" style="background-color: #FF6B6B;" title="Trigger Emergency SOS Broadcast">
+    <!-- Emergency SOS Button (Static Fiery Scarlet, No Blinking) -->
+    <button id="sos-btn" class="w-16 h-16 rounded-full bg-[#DA2C38] text-white font-bold text-xs shadow-2xl interactive-element flex flex-col items-center justify-center border-2 border-white/90 cursor-pointer transition-all hover:scale-105 active:scale-95" style="background-color: #DA2C38;" title="Trigger Emergency SOS Broadcast">
       <span class="material-symbols-outlined text-[20px] mb-0.5">emergency</span>
       <span class="tracking-widest font-extrabold text-[11px] leading-none">SOS</span>
     </button>
@@ -477,9 +477,9 @@
       <span class="text-[9.5px] mt-0.5 tracking-tight font-medium">Triage</span>
     </button>
 
-    <!-- Nav Item 3: Center Raised SOS Pulse Trigger -->
+    <!-- Nav Item 3: Center Raised SOS Trigger (Static Fiery Scarlet, No Blinking) -->
     <button id="nav-btn-sos" aria-label="Emergency SOS Trigger" class="relative -top-3.5 flex flex-col items-center justify-center group active:scale-90 transition-transform outline-none">
-      <div class="w-[50px] h-[50px] rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/60 ring-4 ring-[#16181D] animate-pulse">
+      <div class="w-[50px] h-[50px] rounded-full bg-[#DA2C38] text-white flex items-center justify-center shadow-lg shadow-[#DA2C38]/50 ring-4 ring-[#16181D]">
         <span class="material-symbols-outlined text-[24px] text-white">emergency</span>
       </div>
       <span class="text-[9px] text-white font-black mt-0.5 tracking-widest uppercase">SOS</span>

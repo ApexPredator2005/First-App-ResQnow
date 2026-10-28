@@ -47,12 +47,12 @@ const state = {
 };
 
 const CATEGORY_META = {
-  hospital: { label: "Hospitals", singular: "Hospital", icon: "🏥", color: "#ff3366", searchTerms: ["hospital", "trauma center", "emergency room", "urgent care"] },
-  police: { label: "Police Stations", singular: "Police Station", icon: "🚓", color: "#3b82f6", searchTerms: ["police station"] },
-  fire_station: { label: "Fire Stations", singular: "Fire Station", icon: "🚒", color: "#ff6a00", searchTerms: ["fire station", "fire department", "fire rescue"] },
-  pharmacy: { label: "24/7 Pharmacies", singular: "Pharmacy", icon: "💊", color: "#10b981", searchTerms: ["pharmacy", "medical store", "drugstore", "chemist"] },
-  veterinary_care: { label: "Veterinary Clinics", singular: "Vet Clinic", icon: "🐾", color: "#a855f7", searchTerms: ["veterinary", "pet hospital", "animal hospital", "vet clinic"] },
-  blood_bank: { label: "Blood Banks", singular: "Blood Bank", icon: "🩸", color: "#ef4444", searchTerms: ["blood bank", "blood center", "blood donor", "plasma center", "plasma donation", "red cross"] }
+  hospital: { label: "Hospitals", singular: "Hospital", icon: "🏥", color: "#DA2C38", searchTerms: ["hospital", "trauma center", "emergency room", "urgent care"] },
+  police: { label: "Police Stations", singular: "Police Station", icon: "🚓", color: "#226F54", searchTerms: ["police station"] },
+  fire_station: { label: "Fire Stations", singular: "Fire Station", icon: "🚒", color: "#F4F0BB", searchTerms: ["fire station", "fire department", "fire rescue"] },
+  pharmacy: { label: "24/7 Pharmacies", singular: "Pharmacy", icon: "💊", color: "#87C38F", searchTerms: ["pharmacy", "medical store", "drugstore", "chemist"] },
+  veterinary_care: { label: "Veterinary Clinics", singular: "Vet Clinic", icon: "🐾", color: "#43291F", searchTerms: ["veterinary", "pet hospital", "animal hospital", "vet clinic"] },
+  blood_bank: { label: "Blood Banks", singular: "Blood Bank", icon: "🩸", color: "#DA2C38", searchTerms: ["blood bank", "blood center", "blood donor", "plasma center", "plasma donation", "red cross"] }
 };
 
 // Default Safe Urban Fallback (if GPS permission denied or testing headless)
